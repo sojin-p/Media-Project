@@ -14,7 +14,32 @@ class TmdbAPIManager {
     static let shared = TmdbAPIManager()
     private init() { }
     
+    var genreCode: [Int: String] = [:]
+    
+    func callGenre(type: Endpoint) {
+        
+        let url = type.requestURL
+        
+        AF.request(url, method: .get).validate().responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                
+                for i in json["genres"].arrayValue {
+                    let id = i["id"].intValue
+                    let genre = i["name"].stringValue
+                    self.genreCode[id] = genre
+                }
+                
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
     func callRequest(type: Endpoint, completionHandler: @escaping ([Movie]) -> () ) {
+        
+        callGenre(type: .movieGenre)
         
         let url = type.requestURL
         let parameters: Parameters = ["language": "ko"]
@@ -30,11 +55,14 @@ class TmdbAPIManager {
                     let title = item["title"].stringValue
                     let originalTitle = item["original_title"].stringValue
                     let releaseDate = item["release_date"].stringValue
-                    let ganre = item["genre_ids"].intValue
+                    
+                    let genre1 = item["genre_ids"][0].intValue
+                    guard let genre = self.genreCode[genre1] else { return }
+                    
                     let overview = item["overview"].stringValue
                     let prosterURL = item["backdrop_path"].stringValue
                     
-                    let data = Movie(title: title, originalTitle: originalTitle, releaseDate: releaseDate, ganre: ganre, overview: overview, posterURL: prosterURL)
+                    let data = Movie(title: title, originalTitle: originalTitle, releaseDate: releaseDate, ganre: genre, overview: overview, posterURL: prosterURL)
                     
                     test.append(data)
                 }
@@ -47,5 +75,4 @@ class TmdbAPIManager {
         }
     }
 
-    
 }

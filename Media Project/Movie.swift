@@ -11,7 +11,7 @@ struct Movie {
     let title: String
     let originalTitle: String
     let releaseDate: String
-    let ganre: Int //배열
+    let ganre: String
     let overview: String
     let posterURL: String
     

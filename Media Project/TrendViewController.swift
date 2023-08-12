@@ -38,7 +38,6 @@ class TrendViewController: UIViewController {
         }
     }
 
-
 }
 
 extension TrendViewController: UITableViewDelegate, UITableViewDataSource {
