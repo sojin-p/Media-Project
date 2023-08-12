@@ -32,9 +32,9 @@ class TmdbAPIManager {
                     let releaseDate = item["release_date"].stringValue
                     let ganre = item["genre_ids"].intValue
                     let overview = item["overview"].stringValue
-                    let prosterURL = item["poster_path"].stringValue
+                    let prosterURL = item["backdrop_path"].stringValue
                     
-                    let data = Movie(title: title, originalTitle: originalTitle, releaseDate: releaseDate, ganre: ganre, overview: overview, prosterURL: prosterURL)
+                    let data = Movie(title: title, originalTitle: originalTitle, releaseDate: releaseDate, ganre: ganre, overview: overview, posterURL: prosterURL)
                     
                     test.append(data)
                 }

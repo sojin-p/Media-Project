@@ -24,6 +24,7 @@
 		235878D62A873C2500861B01 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235878D52A873C2500861B01 /* Endpoint.swift */; };
 		235878D82A873C6600861B01 /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235878D72A873C6600861B01 /* URL+Extension.swift */; };
 		235878DA2A8740F500861B01 /* TmdbAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235878D92A8740F500861B01 /* TmdbAPIManager.swift */; };
+		235878DD2A8754E700861B01 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 235878DC2A8754E700861B01 /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				235878DD2A8754E700861B01 /* Kingfisher in Frameworks */,
 				235878D22A87314100861B01 /* SwiftyJSON in Frameworks */,
 				235878CF2A87313700861B01 /* Alamofire in Frameworks */,
 			);
@@ -117,6 +119,7 @@
 			packageProductDependencies = (
 				235878CE2A87313700861B01 /* Alamofire */,
 				235878D12A87314100861B01 /* SwiftyJSON */,
+				235878DC2A8754E700861B01 /* Kingfisher */,
 			);
 			productName = "Media Project";
 			productReference = 235878AC2A86348000861B01 /* Media Project.app */;
@@ -149,6 +152,7 @@
 			packageReferences = (
 				235878CD2A87313700861B01 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				235878D02A87314100861B01 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				235878DB2A8754E700861B01 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 235878AD2A86348000861B01 /* Products */;
 			projectDirPath = "";
@@ -432,6 +436,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		235878DB2A8754E700861B01 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -444,6 +456,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 235878D02A87314100861B01 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
 			productName = SwiftyJSON;
+		};
+		235878DC2A8754E700861B01 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 235878DB2A8754E700861B01 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

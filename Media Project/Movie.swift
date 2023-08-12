@@ -13,7 +13,7 @@ struct Movie {
     let releaseDate: String
     let ganre: Int //배열
     let overview: String
-    let prosterURL: String
+    let posterURL: String
     
     var movieTitle: String {
         "\(title) (\(originalTitle))"

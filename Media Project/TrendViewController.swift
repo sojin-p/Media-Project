@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class TrendViewController: UIViewController {
 
@@ -51,6 +52,10 @@ extension TrendViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.genreLabel.text = "\(trendMovieList[indexPath.row].ganre)"
         cell.releaseDateLabel.text = trendMovieList[indexPath.row].releaseDate
+        
+        let url = URL(string: URL.imageURL+trendMovieList[indexPath.row].posterURL)
+        cell.posterImageView.kf.setImage(with: url)
+        cell.posterImageView.contentMode = .scaleAspectFill
         
         cell.trendTitleLabel.text = trendMovieList[indexPath.row].movieTitle
         cell.overviewLabel.text = trendMovieList[indexPath.row].overview
