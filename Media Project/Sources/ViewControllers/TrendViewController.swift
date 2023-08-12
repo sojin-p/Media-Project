@@ -17,16 +17,7 @@ class TrendViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "타이틀"
-        
-        trendTableView.delegate = self
-        trendTableView.dataSource = self
-        trendTableView.estimatedRowHeight = 380
-        trendTableView.rowHeight = UITableView.automaticDimension
-        
-        let nib = UINib(nibName: TrendTableViewCell.identifier, bundle: nil)
-        trendTableView.register(nib, forCellReuseIdentifier: TrendTableViewCell.identifier)
-        
+        setUI()
         callRequest()
         
     }
@@ -49,7 +40,7 @@ extension TrendViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TrendTableViewCell.identifier) as? TrendTableViewCell else { return UITableViewCell() }
         
-        cell.genreLabel.text = "\(trendMovieList[indexPath.row].genre)"
+        cell.genreLabel.text = "#\(trendMovieList[indexPath.row].genre)"
         cell.releaseDateLabel.text = trendMovieList[indexPath.row].releaseDate
         
         let url = URL(string: trendMovieList[indexPath.row].backdropURL)
@@ -76,4 +67,25 @@ extension TrendViewController: UITableViewDelegate, UITableViewDataSource {
         trendTableView.reloadData()
     }
     
+}
+
+extension TrendViewController {
+    
+    func setUI() {
+        title = "타이틀"
+        
+        trendTableView.delegate = self
+        trendTableView.dataSource = self
+        trendTableView.estimatedRowHeight = 380
+        trendTableView.rowHeight = UITableView.automaticDimension
+        
+        trendTableView.separatorColor = .clear
+        
+        setNib()
+    }
+    
+    func setNib() {
+        let nib = UINib(nibName: TrendTableViewCell.identifier, bundle: nil)
+        trendTableView.register(nib, forCellReuseIdentifier: TrendTableViewCell.identifier)
+    }
 }

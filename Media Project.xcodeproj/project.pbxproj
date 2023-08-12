@@ -92,30 +92,86 @@
 		235878AE2A86348000861B01 /* Media Project */ = {
 			isa = PBXGroup;
 			children = (
+				235878EA2A87B4CD00861B01 /* Resources */,
+				235878ED2A87B53100861B01 /* Sources */,
+				235878C72A87121C00861B01 /* ReusableViewProtocol.swift */,
+				235878D52A873C2500861B01 /* Endpoint.swift */,
+				235878D72A873C6600861B01 /* URL+Extension.swift */,
+				235878BD2A86348300861B01 /* Info.plist */,
+			);
+			path = "Media Project";
+			sourceTree = "<group>";
+		};
+		235878EA2A87B4CD00861B01 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
 				235878AF2A86348000861B01 /* AppDelegate.swift */,
 				235878B12A86348000861B01 /* SceneDelegate.swift */,
+				235878B82A86348300861B01 /* Assets.xcassets */,
+				235878EB2A87B4E300861B01 /* API */,
+				235878EC2A87B50100861B01 /* Storyboards */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		235878EB2A87B4E300861B01 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				235878D92A8740F500861B01 /* TmdbAPIManager.swift */,
+				235878CB2A87308C00861B01 /* APIKey.swift */,
+				235878C92A87306900861B01 /* .gitignore */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		235878EC2A87B50100861B01 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
 				235878B52A86348000861B01 /* Main.storyboard */,
+				235878BA2A86348300861B01 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		235878ED2A87B53100861B01 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				235878EE2A87B53900861B01 /* ViewControllers */,
+				235878EF2A87B54A00861B01 /* Cells */,
+				235878F02A87B58100861B01 /* Models */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		235878EE2A87B53900861B01 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				235878B32A86348000861B01 /* TrendViewController.swift */,
+				235878DE2A87789600861B01 /* DetailViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		235878EF2A87B54A00861B01 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
 				235878E42A877B0700861B01 /* CastTableViewCell.swift */,
 				235878E52A877B0700861B01 /* CastTableViewCell.xib */,
 				235878E02A8779E800861B01 /* DetailTableViewCell.swift */,
 				235878E12A8779E800861B01 /* DetailTableViewCell.xib */,
-				235878DE2A87789600861B01 /* DetailViewController.swift */,
-				235878B32A86348000861B01 /* TrendViewController.swift */,
 				235878C32A8711DA00861B01 /* TrendTableViewCell.swift */,
 				235878C42A8711DA00861B01 /* TrendTableViewCell.xib */,
-				235878C72A87121C00861B01 /* ReusableViewProtocol.swift */,
-				235878C92A87306900861B01 /* .gitignore */,
-				235878CB2A87308C00861B01 /* APIKey.swift */,
-				235878E82A87A65500861B01 /* Cast.swift */,
-				235878D32A873B1B00861B01 /* Movie.swift */,
-				235878D52A873C2500861B01 /* Endpoint.swift */,
-				235878D72A873C6600861B01 /* URL+Extension.swift */,
-				235878D92A8740F500861B01 /* TmdbAPIManager.swift */,
-				235878B82A86348300861B01 /* Assets.xcassets */,
-				235878BA2A86348300861B01 /* LaunchScreen.storyboard */,
-				235878BD2A86348300861B01 /* Info.plist */,
 			);
-			path = "Media Project";
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		235878F02A87B58100861B01 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				235878D32A873B1B00861B01 /* Movie.swift */,
+				235878E82A87A65500861B01 /* Cast.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

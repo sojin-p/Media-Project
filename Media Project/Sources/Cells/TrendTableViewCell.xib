@@ -37,46 +37,45 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hU1-5t-RC0">
-                        <rect key="frame" x="20" y="54" width="310" height="310"/>
+                        <rect key="frame" x="20" y="54" width="300" height="300"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JkT-gV-GFm">
-                                <rect key="frame" x="0.0" y="0.0" width="310" height="186"/>
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="180"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mqD-Yf-s8E">
-                                <rect key="frame" x="14" y="206" width="282" height="24"/>
+                                <rect key="frame" x="14" y="200" width="272" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7OK-bt-Fjg">
-                                <rect key="frame" x="14" y="234" width="282" height="16"/>
+                                <rect key="frame" x="14" y="228" width="272" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KDS-AT-xkq">
-                                <rect key="frame" x="14" y="265" width="282" height="1"/>
-                                <color key="backgroundColor" systemColor="systemCyanColor"/>
+                                <rect key="frame" x="14" y="259" width="272" height="1"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="tzG-5A-mBH"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rJ8-Gw-fkS">
-                                <rect key="frame" x="14" y="284" width="33" height="16"/>
+                                <rect key="frame" x="14" y="274" width="33" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ceB-RO-O2q">
-                                <rect key="frame" x="272" y="276" width="24" height="24"/>
-                                <color key="backgroundColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="266" y="270" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ceB-RO-O2q" secondAttribute="height" multiplier="1:1" id="C3W-4e-lDh"/>
-                                    <constraint firstAttribute="height" constant="24" id="DIf-GP-e0A"/>
+                                    <constraint firstAttribute="height" constant="20" id="DIf-GP-e0A"/>
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemYellowColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="KDS-AT-xkq" firstAttribute="top" secondItem="7OK-bt-Fjg" secondAttribute="bottom" constant="15" id="0uW-NH-5iS"/>
                             <constraint firstItem="7OK-bt-Fjg" firstAttribute="leading" secondItem="mqD-Yf-s8E" secondAttribute="leading" id="4bm-rO-yfM"/>
@@ -115,6 +114,9 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="backView" destination="hU1-5t-RC0" id="VAt-4s-R04"/>
+                <outlet property="detailImageView" destination="ceB-RO-O2q" id="tra-Rb-tta"/>
+                <outlet property="detailLabel" destination="rJ8-Gw-fkS" id="LOL-Yk-Vr7"/>
                 <outlet property="genreLabel" destination="N3m-99-DxF" id="r0N-IJ-F15"/>
                 <outlet property="overviewLabel" destination="7OK-bt-Fjg" id="4Xb-at-pbT"/>
                 <outlet property="posterImageView" destination="JkT-gV-GFm" id="jyP-Jn-kj2"/>
@@ -125,11 +127,8 @@
         </tableViewCell>
     </objects>
     <resources>
-        <systemColor name="systemCyanColor">
-            <color red="0.19607843137254902" green="0.67843137254901964" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemYellowColor">
-            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>
