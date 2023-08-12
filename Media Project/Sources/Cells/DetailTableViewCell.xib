@@ -19,19 +19,18 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="49e-qw-Bb3">
-                        <rect key="frame" x="20" y="8" width="280" height="91"/>
+                        <rect key="frame" x="20" y="8" width="280" height="88"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                         <color key="textColor" systemColor="labelColor"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fGw-Iw-SG1">
-                        <rect key="frame" x="145" y="99" width="30" height="30"/>
-                        <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                        <rect key="frame" x="147.66666666666666" y="104" width="25" height="25"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="fGw-Iw-SG1" secondAttribute="height" multiplier="1:1" id="2Ed-Go-Wec"/>
-                            <constraint firstAttribute="width" constant="30" id="LWz-7O-PI1"/>
+                            <constraint firstAttribute="width" constant="25" id="LWz-7O-PI1"/>
                         </constraints>
                     </imageView>
                 </subviews>
@@ -41,11 +40,12 @@
                     <constraint firstItem="49e-qw-Bb3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="9vv-7M-Y7O"/>
                     <constraint firstItem="49e-qw-Bb3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="drQ-Or-3BO"/>
                     <constraint firstAttribute="trailing" secondItem="49e-qw-Bb3" secondAttribute="trailing" constant="20" id="f8B-RQ-POL"/>
-                    <constraint firstItem="fGw-Iw-SG1" firstAttribute="top" secondItem="49e-qw-Bb3" secondAttribute="bottom" id="vg1-Fy-NJj"/>
+                    <constraint firstItem="fGw-Iw-SG1" firstAttribute="top" secondItem="49e-qw-Bb3" secondAttribute="bottom" constant="8" id="vg1-Fy-NJj"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="moreImageView" destination="fGw-Iw-SG1" id="GAD-YU-Lzc"/>
                 <outlet property="overviewTextView" destination="49e-qw-Bb3" id="Lsm-mj-G5m"/>
             </connections>
             <point key="canvasLocation" x="19.847328244274809" y="75.704225352112687"/>
@@ -54,9 +54,6 @@
     <resources>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="opaqueSeparatorColor">
-            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

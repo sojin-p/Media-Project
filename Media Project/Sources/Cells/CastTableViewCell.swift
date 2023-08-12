@@ -14,7 +14,11 @@ class CastTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        castImageView.backgroundColor = .systemGray5
+        castImageView.layer.cornerRadius = 7
+        castTitleLabel.font = .systemFont(ofSize: 14)
+        
     }
 
     

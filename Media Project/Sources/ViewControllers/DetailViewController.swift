@@ -23,25 +23,7 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let movie else { return }
-        
-        titleLabel.text = movie.movieTitle
-        
-        let backdrop = URL(string: movie.backdropURL)
-        let poster = URL(string: movie.posterURL)
-        backdropImageView.kf.setImage(with: backdrop)
-        posterImageView.kf.setImage(with: poster)
-        
-        detailTableView.delegate = self
-        detailTableView.dataSource = self
-        
-        let detailNib = UINib(nibName: DetailTableViewCell.identifier, bundle: nil)
-        detailTableView.register(detailNib, forCellReuseIdentifier: DetailTableViewCell.identifier)
-        
-        let castNib = UINib(nibName: CastTableViewCell.identifier, bundle: nil)
-        detailTableView.register(castNib, forCellReuseIdentifier: CastTableViewCell.identifier)
-        
-        callRequest(id: movie.id)
+        setUI()
 
     }
     
@@ -82,6 +64,12 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
             
             detailCell.overviewTextView.text = movie?.overview
             
+            if isClicked {
+                detailCell.moreImageView.image = UIImage(systemName: "chevron.up")
+            } else {
+                detailCell.moreImageView.image = UIImage(systemName: "chevron.down")
+            }
+            
             return detailCell
             
         case 1:
@@ -104,13 +92,16 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
+
         if indexPath.section == 0, isClicked {
-            return 300 //유동적으로..
+            return 200
+        } else {
+            return 90
         }
-        return 90
+        
     }
     
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if indexPath.section == 0 {
@@ -118,5 +109,40 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
         }
         tableView.reloadData()
         
+    }
+}
+
+extension DetailViewController {
+    
+    func setUI() {
+        guard let movie else { return }
+        
+        title = "출연/제작"
+        
+        titleLabel.text = movie.movieTitle
+        titleLabel.textColor = .white
+        titleLabel.font = .boldSystemFont(ofSize: 17)
+        
+        let backdrop = URL(string: movie.backdropURL)
+        backdropImageView.kf.setImage(with: backdrop)
+        backdropImageView.contentMode = .scaleAspectFill
+        
+        let poster = URL(string: movie.posterURL)
+        posterImageView.kf.setImage(with: poster)
+        posterImageView.contentMode = .scaleAspectFill
+        
+        detailTableView.delegate = self
+        detailTableView.dataSource = self
+        
+        setNib()
+        callRequest(id: movie.id)
+    }
+    
+    func setNib() {
+        let detailNib = UINib(nibName: DetailTableViewCell.identifier, bundle: nil)
+        detailTableView.register(detailNib, forCellReuseIdentifier: DetailTableViewCell.identifier)
+        
+        let castNib = UINib(nibName: CastTableViewCell.identifier, bundle: nil)
+        detailTableView.register(castNib, forCellReuseIdentifier: CastTableViewCell.identifier)
     }
 }

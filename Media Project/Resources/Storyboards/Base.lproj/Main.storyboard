@@ -60,13 +60,12 @@
                                         </imageView>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qaz-Ip-LL5">
                                             <rect key="frame" x="30" y="60" width="80" height="120"/>
-                                            <color key="backgroundColor" systemColor="systemCyanColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="qaz-Ip-LL5" secondAttribute="height" multiplier="2:3" id="bsG-ka-big"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oTB-Jw-aAJ">
-                                            <rect key="frame" x="30.000000000000004" y="20" width="41.333333333333343" height="36"/>
+                                            <rect key="frame" x="30" y="20" width="370" height="36"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -75,6 +74,7 @@
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
                                         <constraint firstItem="qaz-Ip-LL5" firstAttribute="leading" secondItem="Izk-iY-NwY" secondAttribute="leading" constant="30" id="1Ck-VL-CLn"/>
+                                        <constraint firstAttribute="trailing" secondItem="oTB-Jw-aAJ" secondAttribute="trailing" constant="30" id="Cgn-pI-SLl"/>
                                         <constraint firstAttribute="trailing" secondItem="Rgn-Ge-52O" secondAttribute="trailing" id="CyE-T6-94O"/>
                                         <constraint firstItem="qaz-Ip-LL5" firstAttribute="top" secondItem="oTB-Jw-aAJ" secondAttribute="bottom" constant="4" id="KrR-Ly-hml"/>
                                         <constraint firstItem="oTB-Jw-aAJ" firstAttribute="leading" secondItem="qaz-Ip-LL5" secondAttribute="leading" id="WBp-bx-Dih"/>
@@ -130,9 +130,6 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemCyanColor">
-            <color red="0.19607843137254902" green="0.67843137254901964" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

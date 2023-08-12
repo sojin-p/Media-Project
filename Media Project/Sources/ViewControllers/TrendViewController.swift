@@ -13,7 +13,7 @@ class TrendViewController: UIViewController {
     @IBOutlet var trendTableView: UITableView!
     
     var trendMovieList: [Movie] = []
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -57,13 +57,12 @@ extension TrendViewController: UITableViewDelegate, UITableViewDataSource {
         let MainSB = UIStoryboard(name: "Main", bundle: nil)
         guard let detailVC = MainSB.instantiateViewController(withIdentifier: DetailViewController.identifier) as? DetailViewController else { return }
         
-        let nav = UINavigationController(rootViewController: detailVC)
-        
         detailVC.movie = trendMovieList[indexPath.row]
         
         tableView.reloadRows(at: [indexPath], with: .none)
         
         navigationController?.pushViewController(detailVC, animated: true)
+        
         trendTableView.reloadData()
     }
     
