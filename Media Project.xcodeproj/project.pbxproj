@@ -25,6 +25,11 @@
 		235878D82A873C6600861B01 /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235878D72A873C6600861B01 /* URL+Extension.swift */; };
 		235878DA2A8740F500861B01 /* TmdbAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235878D92A8740F500861B01 /* TmdbAPIManager.swift */; };
 		235878DD2A8754E700861B01 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 235878DC2A8754E700861B01 /* Kingfisher */; };
+		235878DF2A87789600861B01 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235878DE2A87789600861B01 /* DetailViewController.swift */; };
+		235878E22A8779E800861B01 /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235878E02A8779E800861B01 /* DetailTableViewCell.swift */; };
+		235878E32A8779E800861B01 /* DetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 235878E12A8779E800861B01 /* DetailTableViewCell.xib */; };
+		235878E62A877B0700861B01 /* CastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235878E42A877B0700861B01 /* CastTableViewCell.swift */; };
+		235878E72A877B0700861B01 /* CastTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 235878E52A877B0700861B01 /* CastTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +50,11 @@
 		235878D52A873C2500861B01 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		235878D72A873C6600861B01 /* URL+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
 		235878D92A8740F500861B01 /* TmdbAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TmdbAPIManager.swift; sourceTree = "<group>"; };
+		235878DE2A87789600861B01 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		235878E02A8779E800861B01 /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
+		235878E12A8779E800861B01 /* DetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailTableViewCell.xib; sourceTree = "<group>"; };
+		235878E42A877B0700861B01 /* CastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastTableViewCell.swift; sourceTree = "<group>"; };
+		235878E52A877B0700861B01 /* CastTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CastTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +93,11 @@
 				235878AF2A86348000861B01 /* AppDelegate.swift */,
 				235878B12A86348000861B01 /* SceneDelegate.swift */,
 				235878B52A86348000861B01 /* Main.storyboard */,
+				235878E42A877B0700861B01 /* CastTableViewCell.swift */,
+				235878E52A877B0700861B01 /* CastTableViewCell.xib */,
+				235878E02A8779E800861B01 /* DetailTableViewCell.swift */,
+				235878E12A8779E800861B01 /* DetailTableViewCell.xib */,
+				235878DE2A87789600861B01 /* DetailViewController.swift */,
 				235878B32A86348000861B01 /* TrendViewController.swift */,
 				235878C32A8711DA00861B01 /* TrendTableViewCell.swift */,
 				235878C42A8711DA00861B01 /* TrendTableViewCell.xib */,
@@ -169,9 +184,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				235878CA2A87306A00861B01 /* .gitignore in Resources */,
+				235878E72A877B0700861B01 /* CastTableViewCell.xib in Resources */,
 				235878BC2A86348300861B01 /* LaunchScreen.storyboard in Resources */,
 				235878B92A86348300861B01 /* Assets.xcassets in Resources */,
 				235878B72A86348000861B01 /* Main.storyboard in Resources */,
+				235878E32A8779E800861B01 /* DetailTableViewCell.xib in Resources */,
 				235878C62A8711DA00861B01 /* TrendTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -183,11 +200,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				235878DF2A87789600861B01 /* DetailViewController.swift in Sources */,
 				235878D42A873B1B00861B01 /* Movie.swift in Sources */,
 				235878B42A86348000861B01 /* TrendViewController.swift in Sources */,
 				235878D62A873C2500861B01 /* Endpoint.swift in Sources */,
 				235878DA2A8740F500861B01 /* TmdbAPIManager.swift in Sources */,
 				235878C82A87121C00861B01 /* ReusableViewProtocol.swift in Sources */,
+				235878E22A8779E800861B01 /* DetailTableViewCell.swift in Sources */,
+				235878E62A877B0700861B01 /* CastTableViewCell.swift in Sources */,
 				235878B02A86348000861B01 /* AppDelegate.swift in Sources */,
 				235878D82A873C6600861B01 /* URL+Extension.swift in Sources */,
 				235878B22A86348000861B01 /* SceneDelegate.swift in Sources */,

@@ -26,7 +26,7 @@ class TrendViewController: UIViewController {
         
         let nib = UINib(nibName: TrendTableViewCell.identifier, bundle: nil)
         trendTableView.register(nib, forCellReuseIdentifier: TrendTableViewCell.identifier)
-
+        
         callRequest()
         
     }
@@ -60,6 +60,20 @@ extension TrendViewController: UITableViewDelegate, UITableViewDataSource {
         cell.overviewLabel.text = trendMovieList[indexPath.row].overview
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let MainSB = UIStoryboard(name: "Main", bundle: nil)
+        guard let detailVC = MainSB.instantiateViewController(withIdentifier: DetailViewController.identifier) as? DetailViewController else { return }
+        
+        let nav = UINavigationController(rootViewController: detailVC)
+        
+        //값 전달 : ID, 제목, 이미지두개, 오버뷰
+        
+        tableView.reloadRows(at: [indexPath], with: .none)
+        
+        navigationController?.pushViewController(detailVC, animated: true)
+        trendTableView.reloadData()
     }
     
 }
