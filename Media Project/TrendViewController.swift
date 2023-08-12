@@ -52,7 +52,7 @@ extension TrendViewController: UITableViewDelegate, UITableViewDataSource {
         cell.genreLabel.text = "\(trendMovieList[indexPath.row].genre)"
         cell.releaseDateLabel.text = trendMovieList[indexPath.row].releaseDate
         
-        let url = URL(string: URL.imageURL+trendMovieList[indexPath.row].backdropURL)
+        let url = URL(string: trendMovieList[indexPath.row].backdropURL)
         cell.posterImageView.kf.setImage(with: url)
         cell.posterImageView.contentMode = .scaleAspectFill
         

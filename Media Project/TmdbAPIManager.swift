@@ -43,7 +43,7 @@ class TmdbAPIManager {
         
         let url = type.requestURL
         let parameters: Parameters = ["language": "ko"]
-        var test: [Movie] = []
+        var movie: [Movie] = []
         
         AF.request(url, method: .get, parameters: parameters).validate().responseJSON { response in
             switch response.result {
@@ -62,15 +62,41 @@ class TmdbAPIManager {
                     guard let genre = self.genreCode[genre1] else { return }
                     let overview = item["overview"].stringValue
                     
-                    let posterURL = item["poster_path"].stringValue
-                    let backdropURL = item["backdrop_path"].stringValue
+                    let posterURL = URL.imageURL+item["poster_path"].stringValue
+                    let backdropURL = URL.imageURL+item["backdrop_path"].stringValue
                     
                     let data = Movie(id: id, title: title, originalTitle: originalTitle, releaseDate: releaseDate, genre: genre, overview: overview, posterURL: posterURL, backdropURL: backdropURL)
                     
-                    test.append(data)
+                    movie.append(data)
                 }
                 
-                completionHandler(test)
+                completionHandler(movie)
+                
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func callCreditRequest(id: Int, completionHandler: @escaping ([Cast]) -> () ) {
+        let url = URL(string: "https://api.themoviedb.org/3/movie/\(id)/credits?api_key=\(APIKey.tmdbKey)")
+        var cast: [Cast] = []
+        
+        AF.request(url!, method: .get).validate().responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                print("JSON: \(json)")
+                
+                for i in json["cast"].arrayValue {
+                    let name = i["original_name"].stringValue
+                    let character = i["character"].stringValue
+                    let profile = URL.imageURL+i["profile_path"].stringValue
+                    
+                    let data = Cast(originalName: name, character: character, profileURLString: profile)
+                    cast.append(data)
+                }
+                completionHandler(cast)
                 
             case .failure(let error):
                 print(error)

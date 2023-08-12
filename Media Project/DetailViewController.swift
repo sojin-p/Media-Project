@@ -7,8 +7,6 @@
 
 import UIKit
 import Kingfisher
-import Alamofire
-import SwiftyJSON
 
 class DetailViewController: UIViewController {
 
@@ -29,8 +27,8 @@ class DetailViewController: UIViewController {
         
         titleLabel.text = movie.movieTitle
         
-        let backdrop = URL(string: URL.imageURL + movie.backdropURL)
-        let poster = URL(string: URL.imageURL + movie.posterURL)
+        let backdrop = URL(string: movie.backdropURL)
+        let poster = URL(string: movie.posterURL)
         backdropImageView.kf.setImage(with: backdrop)
         posterImageView.kf.setImage(with: poster)
         
@@ -48,26 +46,9 @@ class DetailViewController: UIViewController {
     }
     
     func callRequest(id: Int) {
-        let url = URL(string: "https://api.themoviedb.org/3/movie/\(id)/credits?api_key=\(APIKey.tmdbKey)")
-        AF.request(url!, method: .get).validate().responseJSON { response in
-            switch response.result {
-            case .success(let value):
-                let json = JSON(value)
-                print("JSON: \(json)")
-                
-                for i in json["cast"].arrayValue {
-                    let name = i["original_name"].stringValue
-                    let character = i["character"].stringValue
-                    let profile = i["profile_path"].stringValue
-                    
-                    let data = Cast(originalName: name, character: character, profileURLString: profile)
-                    self.cast.append(data)
-                }
-                self.detailTableView.reloadData()
-                
-            case .failure(let error):
-                print(error)
-            }
+        TmdbAPIManager.shared.callCreditRequest(id: id) { cast in
+            self.cast = cast
+            self.detailTableView.reloadData()
         }
     }
     
@@ -109,7 +90,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
             DispatchQueue.main.async {
                 castCell.castTitleLabel.text = self.cast[indexPath.row].castTitle
                 
-                let profile = URL(string: URL.imageURL + self.cast[indexPath.row].profileURLString)
+                let profile = URL(string: self.cast[indexPath.row].profileURLString)
                 castCell.castImageView.kf.setImage(with: profile)
                 castCell.castImageView.contentMode = .scaleAspectFill
             }
