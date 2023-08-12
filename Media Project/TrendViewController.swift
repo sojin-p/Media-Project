@@ -6,8 +6,6 @@
 //
 
 import UIKit
-import Alamofire
-import SwiftyJSON
 
 class TrendViewController: UIViewController {
 
@@ -27,35 +25,15 @@ class TrendViewController: UIViewController {
         
         let nib = UINib(nibName: TrendTableViewCell.identifier, bundle: nil)
         trendTableView.register(nib, forCellReuseIdentifier: TrendTableViewCell.identifier)
-        
+
         callRequest()
+        
     }
     
     func callRequest() {
-        let url = "https://api.themoviedb.org/3/trending/movie/day?api_key=\(APIKey.tmbdKey)"
-        let parameters: Parameters = ["language": "ko"]
-        AF.request(url, method: .get, parameters: parameters).validate().responseJSON { response in
-            switch response.result {
-            case .success(let value):
-                let json = JSON(value)
-//                print("JSON: \(json)")
-                
-                for item in json["results"].arrayValue {
-                    let title = item["title"].stringValue
-                    let originalTitle = item["original_title"].stringValue
-                    let releaseDate = item["release_date"].stringValue
-                    let ganre = item["genre_ids"].intValue
-                    let overview = item["overview"].stringValue
-                    let prosterURL = item["poster_path"].stringValue
-                    
-                    let data = Movie(title: title, originalTitle: originalTitle, releaseDate: releaseDate, ganre: ganre, overview: overview, prosterURL: prosterURL)
-                    
-                    print(data,"---------")
-                }
-                
-            case .failure(let error):
-                print(error)
-            }
+        TmdbAPIManager.shared.callRequest(type: .movie) { movie in
+            self.trendMovieList = movie
+            self.trendTableView.reloadData()
         }
     }
 
@@ -65,11 +43,17 @@ class TrendViewController: UIViewController {
 extension TrendViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return trendMovieList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TrendTableViewCell.identifier) as? TrendTableViewCell else { return UITableViewCell() }
+        
+        cell.genreLabel.text = "\(trendMovieList[indexPath.row].ganre)"
+        cell.releaseDateLabel.text = trendMovieList[indexPath.row].releaseDate
+        
+        cell.trendTitleLabel.text = trendMovieList[indexPath.row].movieTitle
+        cell.overviewLabel.text = trendMovieList[indexPath.row].overview
         
         return cell
     }

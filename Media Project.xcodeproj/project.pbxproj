@@ -21,6 +21,9 @@
 		235878CF2A87313700861B01 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 235878CE2A87313700861B01 /* Alamofire */; };
 		235878D22A87314100861B01 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 235878D12A87314100861B01 /* SwiftyJSON */; };
 		235878D42A873B1B00861B01 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235878D32A873B1B00861B01 /* Movie.swift */; };
+		235878D62A873C2500861B01 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235878D52A873C2500861B01 /* Endpoint.swift */; };
+		235878D82A873C6600861B01 /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235878D72A873C6600861B01 /* URL+Extension.swift */; };
+		235878DA2A8740F500861B01 /* TmdbAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235878D92A8740F500861B01 /* TmdbAPIManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +41,9 @@
 		235878C92A87306900861B01 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		235878CB2A87308C00861B01 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		235878D32A873B1B00861B01 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		235878D52A873C2500861B01 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		235878D72A873C6600861B01 /* URL+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
+		235878D92A8740F500861B01 /* TmdbAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TmdbAPIManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,12 +82,15 @@
 				235878B12A86348000861B01 /* SceneDelegate.swift */,
 				235878B52A86348000861B01 /* Main.storyboard */,
 				235878B32A86348000861B01 /* TrendViewController.swift */,
-				235878D32A873B1B00861B01 /* Movie.swift */,
 				235878C32A8711DA00861B01 /* TrendTableViewCell.swift */,
 				235878C42A8711DA00861B01 /* TrendTableViewCell.xib */,
 				235878C72A87121C00861B01 /* ReusableViewProtocol.swift */,
 				235878C92A87306900861B01 /* .gitignore */,
 				235878CB2A87308C00861B01 /* APIKey.swift */,
+				235878D32A873B1B00861B01 /* Movie.swift */,
+				235878D52A873C2500861B01 /* Endpoint.swift */,
+				235878D72A873C6600861B01 /* URL+Extension.swift */,
+				235878D92A8740F500861B01 /* TmdbAPIManager.swift */,
 				235878B82A86348300861B01 /* Assets.xcassets */,
 				235878BA2A86348300861B01 /* LaunchScreen.storyboard */,
 				235878BD2A86348300861B01 /* Info.plist */,
@@ -172,8 +181,11 @@
 			files = (
 				235878D42A873B1B00861B01 /* Movie.swift in Sources */,
 				235878B42A86348000861B01 /* TrendViewController.swift in Sources */,
+				235878D62A873C2500861B01 /* Endpoint.swift in Sources */,
+				235878DA2A8740F500861B01 /* TmdbAPIManager.swift in Sources */,
 				235878C82A87121C00861B01 /* ReusableViewProtocol.swift in Sources */,
 				235878B02A86348000861B01 /* AppDelegate.swift in Sources */,
+				235878D82A873C6600861B01 /* URL+Extension.swift in Sources */,
 				235878B22A86348000861B01 /* SceneDelegate.swift in Sources */,
 				235878CC2A87308C00861B01 /* APIKey.swift in Sources */,
 				235878C52A8711DA00861B01 /* TrendTableViewCell.swift in Sources */,
