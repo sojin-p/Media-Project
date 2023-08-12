@@ -52,17 +52,20 @@ class TmdbAPIManager {
 //                print("JSON: \(json)")
                 
                 for item in json["results"].arrayValue {
+                    
+                    let id = item["id"].intValue
                     let title = item["title"].stringValue
                     let originalTitle = item["original_title"].stringValue
-                    let releaseDate = item["release_date"].stringValue
                     
+                    let releaseDate = item["release_date"].stringValue
                     let genre1 = item["genre_ids"][0].intValue
                     guard let genre = self.genreCode[genre1] else { return }
-                    
                     let overview = item["overview"].stringValue
-                    let prosterURL = item["backdrop_path"].stringValue
                     
-                    let data = Movie(title: title, originalTitle: originalTitle, releaseDate: releaseDate, ganre: genre, overview: overview, posterURL: prosterURL)
+                    let posterURL = item["poster_path"].stringValue
+                    let backdropURL = item["backdrop_path"].stringValue
+                    
+                    let data = Movie(id: id, title: title, originalTitle: originalTitle, releaseDate: releaseDate, genre: genre, overview: overview, posterURL: posterURL, backdropURL: backdropURL)
                     
                     test.append(data)
                 }

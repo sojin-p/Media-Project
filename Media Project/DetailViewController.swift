@@ -6,16 +6,31 @@
 //
 
 import UIKit
+import Kingfisher
 
 class DetailViewController: UIViewController {
 
     @IBOutlet var detailTableView: UITableView!
+    @IBOutlet var backdropImageView: UIImageView!
+    @IBOutlet var posterImageView: UIImageView!
+    @IBOutlet var titleLabel: UILabel!
     
     let sectionTitleList = ["OverView", "Cast"]
     var isClicked: Bool = false
+    var movie: Movie?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        guard let movie else { return }
+        
+        titleLabel.text = movie.movieTitle
+        
+        let backdrop = URL(string: URL.imageURL + movie.backdropURL)
+        let poster = URL(string: URL.imageURL + movie.posterURL)
+        
+        backdropImageView.kf.setImage(with: backdrop)
+        posterImageView.kf.setImage(with: poster)
         
         detailTableView.delegate = self
         detailTableView.dataSource = self
@@ -55,6 +70,8 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
         switch indexPath.section {
         case 0:
             guard let detailCell = tableView.dequeueReusableCell(withIdentifier: DetailTableViewCell.identifier) as? DetailTableViewCell else { return UITableViewCell() }
+            
+            detailCell.overviewTextView.text = movie?.overview
             
             return detailCell
             

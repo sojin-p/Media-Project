@@ -8,12 +8,17 @@
 import Foundation
 
 struct Movie {
+    
+    let id: Int
     let title: String
     let originalTitle: String
+    
     let releaseDate: String
-    let ganre: String
+    let genre: String
     let overview: String
+    
     let posterURL: String
+    let backdropURL: String
     
     var movieTitle: String {
         "\(title) (\(originalTitle))"

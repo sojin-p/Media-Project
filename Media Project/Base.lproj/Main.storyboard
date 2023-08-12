@@ -66,8 +66,8 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oTB-Jw-aAJ">
-                                            <rect key="frame" x="30" y="20" width="59" height="36"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                            <rect key="frame" x="30.000000000000004" y="20" width="41.333333333333343" height="36"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -98,7 +98,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backdropImageView" destination="Rgn-Ge-52O" id="8aH-Qc-VrX"/>
                         <outlet property="detailTableView" destination="011-e8-Vw0" id="Rm5-PS-wXf"/>
+                        <outlet property="posterImageView" destination="qaz-Ip-LL5" id="ZDf-vp-msO"/>
+                        <outlet property="titleLabel" destination="oTB-Jw-aAJ" id="xU1-L0-S00"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yFC-bf-KoZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

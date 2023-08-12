@@ -49,10 +49,10 @@ extension TrendViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TrendTableViewCell.identifier) as? TrendTableViewCell else { return UITableViewCell() }
         
-        cell.genreLabel.text = "\(trendMovieList[indexPath.row].ganre)"
+        cell.genreLabel.text = "\(trendMovieList[indexPath.row].genre)"
         cell.releaseDateLabel.text = trendMovieList[indexPath.row].releaseDate
         
-        let url = URL(string: URL.imageURL+trendMovieList[indexPath.row].posterURL)
+        let url = URL(string: URL.imageURL+trendMovieList[indexPath.row].backdropURL)
         cell.posterImageView.kf.setImage(with: url)
         cell.posterImageView.contentMode = .scaleAspectFill
         
@@ -68,7 +68,7 @@ extension TrendViewController: UITableViewDelegate, UITableViewDataSource {
         
         let nav = UINavigationController(rootViewController: detailVC)
         
-        //값 전달 : ID, 제목, 이미지두개, 오버뷰
+        detailVC.movie = trendMovieList[indexPath.row]
         
         tableView.reloadRows(at: [indexPath], with: .none)
         
