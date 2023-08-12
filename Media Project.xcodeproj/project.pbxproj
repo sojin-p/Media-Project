@@ -16,6 +16,7 @@
 		235878C52A8711DA00861B01 /* TrendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235878C32A8711DA00861B01 /* TrendTableViewCell.swift */; };
 		235878C62A8711DA00861B01 /* TrendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 235878C42A8711DA00861B01 /* TrendTableViewCell.xib */; };
 		235878C82A87121C00861B01 /* ReusableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235878C72A87121C00861B01 /* ReusableViewProtocol.swift */; };
+		235878CA2A87306A00861B01 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 235878C92A87306900861B01 /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		235878C32A8711DA00861B01 /* TrendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendTableViewCell.swift; sourceTree = "<group>"; };
 		235878C42A8711DA00861B01 /* TrendTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrendTableViewCell.xib; sourceTree = "<group>"; };
 		235878C72A87121C00861B01 /* ReusableViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableViewProtocol.swift; sourceTree = "<group>"; };
+		235878C92A87306900861B01 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				235878C32A8711DA00861B01 /* TrendTableViewCell.swift */,
 				235878C42A8711DA00861B01 /* TrendTableViewCell.xib */,
 				235878C72A87121C00861B01 /* ReusableViewProtocol.swift */,
+				235878C92A87306900861B01 /* .gitignore */,
 				235878B82A86348300861B01 /* Assets.xcassets */,
 				235878BA2A86348300861B01 /* LaunchScreen.storyboard */,
 				235878BD2A86348300861B01 /* Info.plist */,
@@ -134,6 +137,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				235878CA2A87306A00861B01 /* .gitignore in Resources */,
 				235878BC2A86348300861B01 /* LaunchScreen.storyboard in Resources */,
 				235878B92A86348300861B01 /* Assets.xcassets in Resources */,
 				235878B72A86348000861B01 /* Main.storyboard in Resources */,
