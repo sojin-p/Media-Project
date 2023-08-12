@@ -17,6 +17,10 @@
 		235878C62A8711DA00861B01 /* TrendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 235878C42A8711DA00861B01 /* TrendTableViewCell.xib */; };
 		235878C82A87121C00861B01 /* ReusableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235878C72A87121C00861B01 /* ReusableViewProtocol.swift */; };
 		235878CA2A87306A00861B01 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 235878C92A87306900861B01 /* .gitignore */; };
+		235878CC2A87308C00861B01 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235878CB2A87308C00861B01 /* APIKey.swift */; };
+		235878CF2A87313700861B01 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 235878CE2A87313700861B01 /* Alamofire */; };
+		235878D22A87314100861B01 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 235878D12A87314100861B01 /* SwiftyJSON */; };
+		235878D42A873B1B00861B01 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235878D32A873B1B00861B01 /* Movie.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +36,8 @@
 		235878C42A8711DA00861B01 /* TrendTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrendTableViewCell.xib; sourceTree = "<group>"; };
 		235878C72A87121C00861B01 /* ReusableViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableViewProtocol.swift; sourceTree = "<group>"; };
 		235878C92A87306900861B01 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		235878CB2A87308C00861B01 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		235878D32A873B1B00861B01 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +45,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				235878D22A87314100861B01 /* SwiftyJSON in Frameworks */,
+				235878CF2A87313700861B01 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,10 +76,12 @@
 				235878B12A86348000861B01 /* SceneDelegate.swift */,
 				235878B52A86348000861B01 /* Main.storyboard */,
 				235878B32A86348000861B01 /* TrendViewController.swift */,
+				235878D32A873B1B00861B01 /* Movie.swift */,
 				235878C32A8711DA00861B01 /* TrendTableViewCell.swift */,
 				235878C42A8711DA00861B01 /* TrendTableViewCell.xib */,
 				235878C72A87121C00861B01 /* ReusableViewProtocol.swift */,
 				235878C92A87306900861B01 /* .gitignore */,
+				235878CB2A87308C00861B01 /* APIKey.swift */,
 				235878B82A86348300861B01 /* Assets.xcassets */,
 				235878BA2A86348300861B01 /* LaunchScreen.storyboard */,
 				235878BD2A86348300861B01 /* Info.plist */,
@@ -95,6 +105,10 @@
 			dependencies = (
 			);
 			name = "Media Project";
+			packageProductDependencies = (
+				235878CE2A87313700861B01 /* Alamofire */,
+				235878D12A87314100861B01 /* SwiftyJSON */,
+			);
 			productName = "Media Project";
 			productReference = 235878AC2A86348000861B01 /* Media Project.app */;
 			productType = "com.apple.product-type.application";
@@ -123,6 +137,10 @@
 				Base,
 			);
 			mainGroup = 235878A32A86348000861B01;
+			packageReferences = (
+				235878CD2A87313700861B01 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				235878D02A87314100861B01 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+			);
 			productRefGroup = 235878AD2A86348000861B01 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -152,10 +170,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				235878D42A873B1B00861B01 /* Movie.swift in Sources */,
 				235878B42A86348000861B01 /* TrendViewController.swift in Sources */,
 				235878C82A87121C00861B01 /* ReusableViewProtocol.swift in Sources */,
 				235878B02A86348000861B01 /* AppDelegate.swift in Sources */,
 				235878B22A86348000861B01 /* SceneDelegate.swift in Sources */,
+				235878CC2A87308C00861B01 /* APIKey.swift in Sources */,
 				235878C52A8711DA00861B01 /* TrendTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -382,6 +402,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		235878CD2A87313700861B01 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		235878D02A87314100861B01 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		235878CE2A87313700861B01 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 235878CD2A87313700861B01 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		235878D12A87314100861B01 /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 235878D02A87314100861B01 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 235878A42A86348000861B01 /* Project object */;
 }

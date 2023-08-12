@@ -115,7 +115,10 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="trendImageView" destination="JkT-gV-GFm" id="jyP-Jn-kj2"/>
+                <outlet property="genreLabel" destination="N3m-99-DxF" id="r0N-IJ-F15"/>
+                <outlet property="overviewLabel" destination="7OK-bt-Fjg" id="4Xb-at-pbT"/>
+                <outlet property="posterImageView" destination="JkT-gV-GFm" id="jyP-Jn-kj2"/>
+                <outlet property="releaseDateLabel" destination="yAQ-6n-qFf" id="1Mh-qM-Ypc"/>
                 <outlet property="trendTitleLabel" destination="mqD-Yf-s8E" id="Snn-Zp-QCe"/>
             </connections>
             <point key="canvasLocation" x="230.40000000000001" y="158.77061469265368"/>

@@ -6,10 +6,14 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class TrendViewController: UIViewController {
 
     @IBOutlet var trendTableView: UITableView!
+    
+    var trendMovieList: [Movie] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +27,36 @@ class TrendViewController: UIViewController {
         
         let nib = UINib(nibName: TrendTableViewCell.identifier, bundle: nil)
         trendTableView.register(nib, forCellReuseIdentifier: TrendTableViewCell.identifier)
+        
+        callRequest()
+    }
+    
+    func callRequest() {
+        let url = "https://api.themoviedb.org/3/trending/movie/day?api_key=\(APIKey.tmbdKey)"
+        let parameters: Parameters = ["language": "ko"]
+        AF.request(url, method: .get, parameters: parameters).validate().responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+//                print("JSON: \(json)")
+                
+                for item in json["results"].arrayValue {
+                    let title = item["title"].stringValue
+                    let originalTitle = item["original_title"].stringValue
+                    let releaseDate = item["release_date"].stringValue
+                    let ganre = item["genre_ids"].intValue
+                    let overview = item["overview"].stringValue
+                    let prosterURL = item["poster_path"].stringValue
+                    
+                    let data = Movie(title: title, originalTitle: originalTitle, releaseDate: releaseDate, ganre: ganre, overview: overview, prosterURL: prosterURL)
+                    
+                    print(data,"---------")
+                }
+                
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 
 

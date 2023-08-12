@@ -9,13 +9,16 @@ import UIKit
 
 class TrendTableViewCell: UITableViewCell {
     
-    @IBOutlet var trendImageView: UIImageView!
+    @IBOutlet var releaseDateLabel: UILabel!
+    @IBOutlet var genreLabel: UILabel!
+    @IBOutlet var posterImageView: UIImageView!
     @IBOutlet var trendTitleLabel: UILabel!
+    @IBOutlet var overviewLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        trendImageView.backgroundColor = .blue
+        posterImageView.backgroundColor = .blue
         trendTitleLabel.text = "되나"
     }
     
