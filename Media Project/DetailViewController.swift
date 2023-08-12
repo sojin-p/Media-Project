@@ -7,6 +7,8 @@
 
 import UIKit
 import Kingfisher
+import Alamofire
+import SwiftyJSON
 
 class DetailViewController: UIViewController {
 
@@ -18,6 +20,7 @@ class DetailViewController: UIViewController {
     let sectionTitleList = ["OverView", "Cast"]
     var isClicked: Bool = false
     var movie: Movie?
+    var cast: [Cast] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +31,6 @@ class DetailViewController: UIViewController {
         
         let backdrop = URL(string: URL.imageURL + movie.backdropURL)
         let poster = URL(string: URL.imageURL + movie.posterURL)
-        
         backdropImageView.kf.setImage(with: backdrop)
         posterImageView.kf.setImage(with: poster)
         
@@ -40,7 +42,33 @@ class DetailViewController: UIViewController {
         
         let castNib = UINib(nibName: CastTableViewCell.identifier, bundle: nil)
         detailTableView.register(castNib, forCellReuseIdentifier: CastTableViewCell.identifier)
+        
+        callRequest(id: movie.id)
 
+    }
+    
+    func callRequest(id: Int) {
+        let url = URL(string: "https://api.themoviedb.org/3/movie/\(id)/credits?api_key=\(APIKey.tmdbKey)")
+        AF.request(url!, method: .get).validate().responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                print("JSON: \(json)")
+                
+                for i in json["cast"].arrayValue {
+                    let name = i["original_name"].stringValue
+                    let character = i["character"].stringValue
+                    let profile = i["profile_path"].stringValue
+                    
+                    let data = Cast(originalName: name, character: character, profileURLString: profile)
+                    self.cast.append(data)
+                }
+                self.detailTableView.reloadData()
+                
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
     
 }
@@ -59,7 +87,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
         if section == 0 {
             return 1
         } else {
-            return 10 //캐스트 수 만큼
+            return cast.count
         }
     }
     
@@ -77,6 +105,14 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
             
         case 1:
             guard let castCell = tableView.dequeueReusableCell(withIdentifier: CastTableViewCell.identifier) as? CastTableViewCell else { return UITableViewCell() }
+            
+            DispatchQueue.main.async {
+                castCell.castTitleLabel.text = self.cast[indexPath.row].castTitle
+                
+                let profile = URL(string: URL.imageURL + self.cast[indexPath.row].profileURLString)
+                castCell.castImageView.kf.setImage(with: profile)
+                castCell.castImageView.contentMode = .scaleAspectFill
+            }
             
             return castCell
             

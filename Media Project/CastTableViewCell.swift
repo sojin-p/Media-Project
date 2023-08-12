@@ -9,6 +9,9 @@ import UIKit
 
 class CastTableViewCell: UITableViewCell {
 
+    @IBOutlet var castImageView: UIImageView!
+    @IBOutlet var castTitleLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

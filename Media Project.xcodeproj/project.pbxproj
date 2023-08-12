@@ -30,6 +30,7 @@
 		235878E32A8779E800861B01 /* DetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 235878E12A8779E800861B01 /* DetailTableViewCell.xib */; };
 		235878E62A877B0700861B01 /* CastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235878E42A877B0700861B01 /* CastTableViewCell.swift */; };
 		235878E72A877B0700861B01 /* CastTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 235878E52A877B0700861B01 /* CastTableViewCell.xib */; };
+		235878E92A87A65600861B01 /* Cast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235878E82A87A65500861B01 /* Cast.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		235878E12A8779E800861B01 /* DetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailTableViewCell.xib; sourceTree = "<group>"; };
 		235878E42A877B0700861B01 /* CastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastTableViewCell.swift; sourceTree = "<group>"; };
 		235878E52A877B0700861B01 /* CastTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CastTableViewCell.xib; sourceTree = "<group>"; };
+		235878E82A87A65500861B01 /* Cast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cast.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				235878C72A87121C00861B01 /* ReusableViewProtocol.swift */,
 				235878C92A87306900861B01 /* .gitignore */,
 				235878CB2A87308C00861B01 /* APIKey.swift */,
+				235878E82A87A65500861B01 /* Cast.swift */,
 				235878D32A873B1B00861B01 /* Movie.swift */,
 				235878D52A873C2500861B01 /* Endpoint.swift */,
 				235878D72A873C6600861B01 /* URL+Extension.swift */,
@@ -202,6 +205,7 @@
 			files = (
 				235878DF2A87789600861B01 /* DetailViewController.swift in Sources */,
 				235878D42A873B1B00861B01 /* Movie.swift in Sources */,
+				235878E92A87A65600861B01 /* Cast.swift in Sources */,
 				235878B42A86348000861B01 /* TrendViewController.swift in Sources */,
 				235878D62A873C2500861B01 /* Endpoint.swift in Sources */,
 				235878DA2A8740F500861B01 /* TmdbAPIManager.swift in Sources */,
