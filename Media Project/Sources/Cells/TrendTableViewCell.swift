@@ -11,6 +11,7 @@ class TrendTableViewCell: UITableViewCell {
     
     @IBOutlet var releaseDateLabel: UILabel!
     @IBOutlet var genreLabel: UILabel!
+    @IBOutlet var posterBackView: UIView!
     @IBOutlet var posterImageView: UIImageView!
     @IBOutlet var trendTitleLabel: UILabel!
     @IBOutlet var overviewLabel: UILabel!
@@ -23,6 +24,9 @@ class TrendTableViewCell: UITableViewCell {
         
         detailImageView.image = UIImage(systemName: "chevron.right")
         detailImageView.tintColor = .black
+        
+        posterBackView.layer.cornerRadius = 15
+        posterBackView.clipsToBounds = true
         
         backView.layer.cornerRadius = 15
         backView.layer.shadowColor = UIColor.gray.cgColor
