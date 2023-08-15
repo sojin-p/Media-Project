@@ -31,6 +31,7 @@
 		235878E62A877B0700861B01 /* CastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235878E42A877B0700861B01 /* CastTableViewCell.swift */; };
 		235878E72A877B0700861B01 /* CastTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 235878E52A877B0700861B01 /* CastTableViewCell.xib */; };
 		235878E92A87A65600861B01 /* Cast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235878E82A87A65500861B01 /* Cast.swift */; };
+		23CB122C2A8B92E80023A9DF /* MovieTrendData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CB122B2A8B92E80023A9DF /* MovieTrendData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,7 @@
 		235878E42A877B0700861B01 /* CastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastTableViewCell.swift; sourceTree = "<group>"; };
 		235878E52A877B0700861B01 /* CastTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CastTableViewCell.xib; sourceTree = "<group>"; };
 		235878E82A87A65500861B01 /* Cast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cast.swift; sourceTree = "<group>"; };
+		23CB122B2A8B92E80023A9DF /* MovieTrendData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTrendData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				235878D92A8740F500861B01 /* TmdbAPIManager.swift */,
+				23CB122B2A8B92E80023A9DF /* MovieTrendData.swift */,
 				235878CB2A87308C00861B01 /* APIKey.swift */,
 				235878C92A87306900861B01 /* .gitignore */,
 			);
@@ -270,6 +273,7 @@
 				235878E62A877B0700861B01 /* CastTableViewCell.swift in Sources */,
 				235878B02A86348000861B01 /* AppDelegate.swift in Sources */,
 				235878D82A873C6600861B01 /* URL+Extension.swift in Sources */,
+				23CB122C2A8B92E80023A9DF /* MovieTrendData.swift in Sources */,
 				235878B22A86348000861B01 /* SceneDelegate.swift in Sources */,
 				235878CC2A87308C00861B01 /* APIKey.swift in Sources */,
 				235878C52A8711DA00861B01 /* TrendTableViewCell.swift in Sources */,

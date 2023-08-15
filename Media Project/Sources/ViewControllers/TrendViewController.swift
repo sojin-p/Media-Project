@@ -13,19 +13,22 @@ class TrendViewController: UIViewController {
     @IBOutlet var trendTableView: UITableView!
     
     var trendMovieList: [Movie] = []
+    var page = 1
+    var stop = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setUI()
-        callRequest()
+        callRequest(page: page)
         
     }
     
-    func callRequest() {
-        TmdbAPIManager.shared.callRequest(type: .movie) { movie in
+    func callRequest(page: Int) {
+        TmdbAPIManager.shared.callRequest(type: .movie, page: page) { movie in
             self.trendMovieList = movie
             self.trendTableView.reloadData()
+            self.stop = false
         }
     }
 
@@ -59,11 +62,25 @@ extension TrendViewController: UITableViewDelegate, UITableViewDataSource {
         
         detailVC.movie = trendMovieList[indexPath.row]
         
-        tableView.reloadRows(at: [indexPath], with: .none)
-        
         navigationController?.pushViewController(detailVC, animated: true)
         
-        trendTableView.reloadData()
+        tableView.reloadRows(at: [indexPath], with: .none)
+        
+    }
+    
+}
+
+extension TrendViewController: UITableViewDataSourcePrefetching {
+    
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        
+        for indexPath in indexPaths {
+            if trendMovieList.count - 1 == indexPath.row && page < 3 {
+//                page += 1
+//                callRequest(page: page)
+                print(trendMovieList.count - 1, indexPath.row, "8번인데 왜 마지막이래???????")
+            }
+        }
     }
     
 }
@@ -75,7 +92,8 @@ extension TrendViewController {
         
         trendTableView.delegate = self
         trendTableView.dataSource = self
-        trendTableView.estimatedRowHeight = 380
+        trendTableView.prefetchDataSource = self
+        trendTableView.estimatedRowHeight = 350
         trendTableView.rowHeight = UITableView.automaticDimension
         
         trendTableView.separatorColor = .clear
