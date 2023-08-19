@@ -19,31 +19,32 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AgW-63-lEV">
-                        <rect key="frame" x="0.0" y="0.0" width="279" height="321"/>
+                        <rect key="frame" x="5" y="5" width="269" height="311"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oW7-YR-jaf">
-                                <rect key="frame" x="10" y="10" width="259" height="301"/>
+                                <rect key="frame" x="0.0" y="0.0" width="269" height="311"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="oW7-YR-jaf" secondAttribute="trailing" constant="10" id="JkO-Cl-QKK"/>
-                            <constraint firstItem="oW7-YR-jaf" firstAttribute="top" secondItem="AgW-63-lEV" secondAttribute="top" constant="10" id="KpB-ae-HB5"/>
-                            <constraint firstItem="oW7-YR-jaf" firstAttribute="leading" secondItem="AgW-63-lEV" secondAttribute="leading" constant="10" id="Sd9-Sz-8rT"/>
-                            <constraint firstAttribute="bottom" secondItem="oW7-YR-jaf" secondAttribute="bottom" constant="10" id="m1c-nn-hR6"/>
+                            <constraint firstAttribute="trailing" secondItem="oW7-YR-jaf" secondAttribute="trailing" id="JkO-Cl-QKK"/>
+                            <constraint firstItem="oW7-YR-jaf" firstAttribute="top" secondItem="AgW-63-lEV" secondAttribute="top" id="KpB-ae-HB5"/>
+                            <constraint firstItem="oW7-YR-jaf" firstAttribute="leading" secondItem="AgW-63-lEV" secondAttribute="leading" id="Sd9-Sz-8rT"/>
+                            <constraint firstAttribute="bottom" secondItem="oW7-YR-jaf" secondAttribute="bottom" id="m1c-nn-hR6"/>
                         </constraints>
                     </view>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="AgW-63-lEV" secondAttribute="trailing" id="PwX-iQ-zwZ"/>
-                <constraint firstAttribute="bottom" secondItem="AgW-63-lEV" secondAttribute="bottom" id="XrX-Uf-Tfq"/>
-                <constraint firstItem="AgW-63-lEV" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="wWx-Im-KlG"/>
-                <constraint firstItem="AgW-63-lEV" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="zZq-m1-uxO"/>
+                <constraint firstAttribute="trailing" secondItem="AgW-63-lEV" secondAttribute="trailing" constant="5" id="PwX-iQ-zwZ"/>
+                <constraint firstAttribute="bottom" secondItem="AgW-63-lEV" secondAttribute="bottom" constant="5" id="XrX-Uf-Tfq"/>
+                <constraint firstItem="AgW-63-lEV" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="wWx-Im-KlG"/>
+                <constraint firstItem="AgW-63-lEV" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="zZq-m1-uxO"/>
             </constraints>
             <size key="customSize" width="279" height="321"/>
             <connections>
+                <outlet property="backView" destination="AgW-63-lEV" id="zng-tG-qEA"/>
                 <outlet property="movieImageView" destination="oW7-YR-jaf" id="b9u-n5-Dab"/>
             </connections>
             <point key="canvasLocation" x="313.74045801526717" y="115.14084507042254"/>

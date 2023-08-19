@@ -19,70 +19,86 @@ class TmdbAPIManager {
                     27: "Horror", 10402: "Music", 9648: "Mystery", 10749: "Romance", 878: "Science Fiction",
                     10770: "TV Movie", 53: "Thriller", 10752: "War", 37: "Western"
     ]
-    
+
     func callRequest(type: Endpoint, page: Int, completionHandler: @escaping ([Movie]) -> () ) {
-        
+
         let url = type.requestURL + "&page=\(page)"
         let parameters: Parameters = ["language": "ko"]
         var movie: [Movie] = []
-        
+
         AF.request(url, method: .get, parameters: parameters).validate().responseJSON { response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
 //                print("JSON: \(json)")
-                
+
                 for item in json["results"].arrayValue {
-                    
+
                     let id = item["id"].intValue
                     let title = item["title"].stringValue
                     let originalTitle = item["original_title"].stringValue
-                    
+
                     let releaseDate = item["release_date"].stringValue
                     let genre1 = item["genre_ids"][0].intValue
                     guard let genre = self.genres[genre1] else { return }
                     let overview = item["overview"].stringValue
-                    
+
                     let posterURL = URL.imageURL+item["poster_path"].stringValue
                     let backdropURL = URL.imageURL+item["backdrop_path"].stringValue
-                    
+
                     let data = Movie(id: id, title: title, originalTitle: originalTitle, releaseDate: releaseDate, genre: genre, overview: overview, posterURL: posterURL, backdropURL: backdropURL)
-                    
+
                     movie.append(data)
                 }
-                
+
                 completionHandler(movie)
-                
-            case .failure(let error):
-                print(error)
-            }
-        }
-    }
-    
-    func callCreditRequest(id: Int, completionHandler: @escaping ([Cast]) -> () ) {
-        let url = URL(string: "https://api.themoviedb.org/3/movie/\(id)/credits?api_key=\(APIKey.tmdbKey)")
-        var cast: [Cast] = []
-        
-        AF.request(url!, method: .get).validate().responseJSON { response in
-            switch response.result {
-            case .success(let value):
-                let json = JSON(value)
-//                print("JSON: \(json)")
-                
-                for i in json["cast"].arrayValue {
-                    let name = i["original_name"].stringValue
-                    let character = i["character"].stringValue
-                    let profile = URL.imageURL+i["profile_path"].stringValue
-                    
-                    let data = Cast(originalName: name, character: character, profileURLString: profile)
-                    cast.append(data)
-                }
-                completionHandler(cast)
-                
+
             case .failure(let error):
                 print(error)
             }
         }
     }
 
+    func callCreditRequest(id: Int, completionHandler: @escaping ([Cast]) -> () ) {
+        let url = URL(string: "https://api.themoviedb.org/3/movie/\(id)/credits?api_key=\(APIKey.tmdbKey)")
+        var cast: [Cast] = []
+
+        AF.request(url!, method: .get).validate().responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+//                print("JSON: \(json)")
+
+                for i in json["cast"].arrayValue {
+                    let name = i["original_name"].stringValue
+                    let character = i["character"].stringValue
+                    let profile = URL.imageURL+i["profile_path"].stringValue
+
+                    let data = Cast(originalName: name, character: character, profileURLString: profile)
+                    cast.append(data)
+                }
+                completionHandler(cast)
+
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+
+    func callSimilarRequset(id: Int, completionHandler: @escaping (MovieTrend) -> () ) {
+        
+        let url = "https://api.themoviedb.org/3/movie/\(id)/similar?api_key=\(APIKey.tmdbKey)"
+        let parameters: Parameters = ["language": "ko"]
+        
+        AF.request(url, method: .get, parameters: parameters).validate(statusCode: 200...500)
+            .responseDecodable(of: MovieTrend.self) { response in
+            switch response.result {
+            case .success(let value):
+                completionHandler(value)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
 }

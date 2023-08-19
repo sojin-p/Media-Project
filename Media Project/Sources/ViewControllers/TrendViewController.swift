@@ -20,7 +20,6 @@ class TrendViewController: UIViewController {
         super.viewDidLoad()
         
         setUI()
-        callRequest(page: page)
         
     }
     
