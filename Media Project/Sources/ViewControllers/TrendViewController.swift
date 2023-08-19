@@ -28,7 +28,6 @@ class TrendViewController: UIViewController {
         TmdbAPIManager.shared.callRequest(type: .movie, page: page) { movie in
             self.trendMovieList = movie
             self.trendTableView.reloadData()
-            self.stop = false
         }
     }
 
@@ -76,9 +75,8 @@ extension TrendViewController: UITableViewDataSourcePrefetching {
         
         for indexPath in indexPaths {
             if trendMovieList.count - 1 == indexPath.row && page < 3 {
-//                page += 1
-//                callRequest(page: page)
-                print(trendMovieList.count - 1, indexPath.row, "8번인데 왜 마지막이래???????")
+                page += 1
+                callRequest(page: page)
             }
         }
     }
