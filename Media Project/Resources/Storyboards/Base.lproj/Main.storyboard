@@ -50,7 +50,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="i4P-A0-4au">
-                                <rect key="frame" x="0.0" y="59" width="430" height="839"/>
+                                <rect key="frame" x="0.0" y="129" width="430" height="769"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="8V5-4m-HDd">
                                     <size key="itemSize" width="128" height="128"/>
@@ -69,14 +69,30 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="isu-2G-uXj">
+                                <rect key="frame" x="30" y="79" width="370" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="2xF-kE-5s2"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentedControlTapped:" destination="kLi-rX-x2S" eventType="valueChanged" id="QJp-lX-jue"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8Dd-ks-eS2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="8Dd-ks-eS2" firstAttribute="trailing" secondItem="i4P-A0-4au" secondAttribute="trailing" id="5Ny-iV-hwN"/>
                             <constraint firstItem="8Dd-ks-eS2" firstAttribute="bottom" secondItem="i4P-A0-4au" secondAttribute="bottom" id="Avp-xV-e3r"/>
-                            <constraint firstItem="i4P-A0-4au" firstAttribute="top" secondItem="8Dd-ks-eS2" secondAttribute="top" id="Fxa-0S-FaJ"/>
+                            <constraint firstItem="isu-2G-uXj" firstAttribute="leading" secondItem="8Dd-ks-eS2" secondAttribute="leading" constant="30" id="Q1j-uu-zB3"/>
                             <constraint firstItem="i4P-A0-4au" firstAttribute="leading" secondItem="8Dd-ks-eS2" secondAttribute="leading" id="dXf-6d-Y4F"/>
+                            <constraint firstItem="8Dd-ks-eS2" firstAttribute="trailing" secondItem="isu-2G-uXj" secondAttribute="trailing" constant="30" id="pJB-HD-CL5"/>
+                            <constraint firstItem="isu-2G-uXj" firstAttribute="top" secondItem="8Dd-ks-eS2" secondAttribute="top" constant="20" id="uMo-SU-6aF"/>
+                            <constraint firstItem="i4P-A0-4au" firstAttribute="top" secondItem="isu-2G-uXj" secondAttribute="bottom" constant="20" id="uS6-YN-gqL"/>
                         </constraints>
                     </view>
                     <connections>

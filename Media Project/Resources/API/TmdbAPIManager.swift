@@ -19,11 +19,11 @@ class TmdbAPIManager {
                     27: "Horror", 10402: "Music", 9648: "Mystery", 10749: "Romance", 878: "Science Fiction",
                     10770: "TV Movie", 53: "Thriller", 10752: "War", 37: "Western"
     ]
+    let parameters: Parameters = ["language": "ko"]
 
     func callRequest(type: Endpoint, page: Int, completionHandler: @escaping ([Movie]) -> () ) {
 
         let url = type.requestURL + "&page=\(page)"
-        let parameters: Parameters = ["language": "ko"]
         var movie: [Movie] = []
 
         AF.request(url, method: .get, parameters: parameters).validate().responseJSON { response in
@@ -88,7 +88,6 @@ class TmdbAPIManager {
     func callSimilarRequset(id: Int, completionHandler: @escaping (MovieTrend) -> () ) {
         
         let url = "https://api.themoviedb.org/3/movie/\(id)/similar?api_key=\(APIKey.tmdbKey)"
-        let parameters: Parameters = ["language": "ko"]
         
         AF.request(url, method: .get, parameters: parameters).validate(statusCode: 200...500)
             .responseDecodable(of: MovieTrend.self) { response in

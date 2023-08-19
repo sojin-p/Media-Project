@@ -11,19 +11,46 @@ class MovieViewController: UIViewController {
     
     @IBOutlet var movieCollectionView: UICollectionView!
     
-    var similarList: MovieTrend = MovieTrend(page: 0, results: [], totalPages: 0, totalResults: 0)
+    var similarList: [MovieTrend] = [
+        MovieTrend(page: 0, results: [], totalPages: 0, totalResults: 0),
+        MovieTrend(page: 0, results: [], totalPages: 0, totalResults: 0),
+        MovieTrend(page: 0, results: [], totalPages: 0, totalResults: 0),
+        MovieTrend(page: 0, results: [], totalPages: 0, totalResults: 0)
+    ]
+    
+    let id = [872585, 976573, 447365, 346698]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setUI()
+        callSimilarRequest()
         
-        TmdbAPIManager.shared.callSimilarRequset(id: 976573) { data in
-            self.similarList = data
-            print(self.similarList.results)
+    }
+    
+    @IBAction func segmentedControlTapped(_ sender: UISegmentedControl) {
+        
+        if sender.selectedSegmentIndex == 0 {
+            callSimilarRequest()
+        }
+    }
+    
+    func callSimilarRequest() {
+        
+        let group = DispatchGroup()
+        
+        for (index, item) in id.enumerated() {
+            group.enter()
+            TmdbAPIManager.shared.callSimilarRequset(id: item) { data in
+                self.similarList[index] = data
+                group.leave()
+            }
+        }
+        
+        group.notify(queue: .main) {
             self.movieCollectionView.reloadData()
         }
-
+        
     }
 
 }
@@ -31,20 +58,18 @@ class MovieViewController: UIViewController {
 extension MovieViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        return 4
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return similarList.results.count
+        return similarList[section].results.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCollectionViewCell.identifier, for: indexPath) as? MovieCollectionViewCell else { return UICollectionViewCell()}
 
-        if indexPath.section == 0 {
-            let url = "https://www.themoviedb.org/t/p/w600_and_h900_bestv2\(similarList.results[indexPath.item].posterPath ?? "")"
-            cell.movieImageView.kf.setImage(with: URL(string: url))
-        }
+        let url = "https://www.themoviedb.org/t/p/w600_and_h900_bestv2\(similarList[indexPath.section].results[indexPath.item].posterPath ?? "")"
+        cell.movieImageView.kf.setImage(with: URL(string: url))
         
         return cell
     }
