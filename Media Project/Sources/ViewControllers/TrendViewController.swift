@@ -14,7 +14,6 @@ class TrendViewController: UIViewController {
     
     var trendMovieList: [Movie] = []
     var page = 1
-    var stop = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +25,7 @@ class TrendViewController: UIViewController {
     
     func callRequest(page: Int) {
         TmdbAPIManager.shared.callRequest(type: .movie, page: page) { movie in
-            self.trendMovieList = movie
+            self.trendMovieList.append(contentsOf: movie)
             self.trendTableView.reloadData()
         }
     }
@@ -74,7 +73,7 @@ extension TrendViewController: UITableViewDataSourcePrefetching {
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         
         for indexPath in indexPaths {
-            if trendMovieList.count - 1 == indexPath.row && page < 3 {
+            if trendMovieList.count - 1 == indexPath.row && page < 5 {
                 page += 1
                 callRequest(page: page)
             }
