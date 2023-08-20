@@ -100,4 +100,19 @@ class TmdbAPIManager {
         }
     }
     
+    func callVideoRequset(id: Int, completionHandler: @escaping (MovieVideoData) -> () ) {
+        
+        let url = "https://api.themoviedb.org/3/movie/\(id)/videos?api_key=\(APIKey.tmdbKey)"
+        
+        AF.request(url, method: .get, parameters: parameters).validate(statusCode: 200...500)
+            .responseDecodable(of: MovieVideoData.self) { response in
+            switch response.result {
+            case .success(let value):
+                completionHandler(value)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
 }

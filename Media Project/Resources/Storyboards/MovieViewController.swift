@@ -10,6 +10,7 @@ import UIKit
 class MovieViewController: UIViewController {
     
     @IBOutlet var movieCollectionView: UICollectionView!
+    @IBOutlet var segmentedControl: UISegmentedControl!
     
     var similarList: [MovieTrend] = [
         MovieTrend(page: 0, results: [], totalPages: 0, totalResults: 0),
@@ -18,7 +19,10 @@ class MovieViewController: UIViewController {
         MovieTrend(page: 0, results: [], totalPages: 0, totalResults: 0)
     ]
     
+    var videoList: [MovieVideoData] = []
+    
     let id = [872585, 976573, 447365, 346698]
+    let group = DispatchGroup()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,18 +36,32 @@ class MovieViewController: UIViewController {
         
         if sender.selectedSegmentIndex == 0 {
             callSimilarRequest()
+        } else {
+            callVideoRequest()
+        }
+    }
+    
+    func callVideoRequest() {
+        for (index, i) in id.enumerated() {
+            group.enter()
+            TmdbAPIManager.shared.callVideoRequset(id: i) { data in
+                self.videoList.append(data)
+                self.group.leave()
+                print(self.videoList[index].results, "호출되나")
+            }
+        }
+        group.notify(queue: .main) {
+            self.movieCollectionView.reloadData()
         }
     }
     
     func callSimilarRequest() {
         
-        let group = DispatchGroup()
-        
         for (index, item) in id.enumerated() {
             group.enter()
             TmdbAPIManager.shared.callSimilarRequset(id: item) { data in
                 self.similarList[index] = data
-                group.leave()
+                self.group.leave()
             }
         }
         
@@ -62,14 +80,20 @@ extension MovieViewController: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return similarList[section].results.count
+        if segmentedControl.selectedSegmentIndex == 0 {
+            return similarList[section].results.count
+        } else {
+            return videoList[section].results.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCollectionViewCell.identifier, for: indexPath) as? MovieCollectionViewCell else { return UICollectionViewCell()}
-
-        let url = "https://www.themoviedb.org/t/p/w600_and_h900_bestv2\(similarList[indexPath.section].results[indexPath.item].posterPath ?? "")"
-        cell.movieImageView.kf.setImage(with: URL(string: url))
+        
+        if segmentedControl.selectedSegmentIndex == 0 {
+            let url = "https://www.themoviedb.org/t/p/w600_and_h900_bestv2\(similarList[indexPath.section].results[indexPath.item].posterPath ?? "")"
+            cell.movieImageView.kf.setImage(with: URL(string: url))
+        }
         
         return cell
     }
