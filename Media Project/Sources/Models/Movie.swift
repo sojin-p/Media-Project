@@ -20,7 +20,7 @@ struct Movie {
     let posterURL: String
     let backdropURL: String
     
-    var movieTitle: String {
-        "\(title) (\(originalTitle))"
-    }
+//    var movieTitle: String {
+//        "\(title) (\(originalTitle))"
+//    }
 }

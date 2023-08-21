@@ -17,7 +17,7 @@ class DetailViewController: UIViewController {
     
     let sectionTitleList = ["OverView", "Cast"]
     var isClicked: Bool = false
-    var movie: Movie?
+    var movie: Result?
     var cast: [Cast] = []
     
     override func viewDidLoad() {
@@ -119,15 +119,15 @@ extension DetailViewController {
         
         title = "출연/제작"
         
-        titleLabel.text = movie.movieTitle
+        titleLabel.text = movie.title
         titleLabel.textColor = .white
         titleLabel.font = .boldSystemFont(ofSize: 17)
         
-        let backdrop = URL(string: movie.backdropURL)
+        let backdrop = URL(string: URL.imageURL + (movie.backdropPath ?? ""))
         backdropImageView.kf.setImage(with: backdrop)
         backdropImageView.contentMode = .scaleAspectFill
         
-        let poster = URL(string: movie.posterURL)
+        let poster = URL(string: URL.imageURL + (movie.posterPath ?? ""))
         posterImageView.kf.setImage(with: poster)
         posterImageView.contentMode = .scaleAspectFill
         
@@ -135,7 +135,7 @@ extension DetailViewController {
         detailTableView.dataSource = self
         
         setNib()
-        callRequest(id: movie.id)
+        callRequest(id: movie.id ?? 0)
     }
     
     func setNib() {

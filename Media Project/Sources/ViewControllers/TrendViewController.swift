@@ -12,7 +12,12 @@ class TrendViewController: UIViewController {
 
     @IBOutlet var trendTableView: UITableView!
     
-    var trendMovieList: [Movie] = []
+    let genres = [ 28: "Action", 12: "Adventure", 16: "Animation", 35: "Comedy", 80: "Crime",
+                    99: "Documentary", 18: "Drama", 10751: "Family", 14: "Fantasy", 36: "History",
+                    27: "Horror", 10402: "Music", 9648: "Mystery", 10749: "Romance", 878: "Science Fiction",
+                    10770: "TV Movie", 53: "Thriller", 10752: "War", 37: "Western"
+    ]
+    var trendList: [Result] = []
     var page = 1
     
     override func viewDidLoad() {
@@ -25,7 +30,7 @@ class TrendViewController: UIViewController {
     
     func callRequest(page: Int) {
         TmdbAPIManager.shared.callRequest(type: .movie, page: page) { movie in
-            self.trendMovieList.append(contentsOf: movie)
+            self.trendList.append(contentsOf: movie.results)
             self.trendTableView.reloadData()
         }
     }
@@ -35,21 +40,24 @@ class TrendViewController: UIViewController {
 extension TrendViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return trendMovieList.count
+        return trendList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TrendTableViewCell.identifier) as? TrendTableViewCell else { return UITableViewCell() }
         
-        cell.genreLabel.text = "#\(trendMovieList[indexPath.row].genre)"
-        cell.releaseDateLabel.text = trendMovieList[indexPath.row].releaseDate
+        if let genre = genres[trendList[indexPath.row].genreIDS[0]] {
+            cell.genreLabel.text = "#\(genre)"
+        }
         
-        let url = URL(string: trendMovieList[indexPath.row].backdropURL)
+        cell.releaseDateLabel.text = trendList[indexPath.row].releaseDate
+
+        let url = URL(string: URL.imageURL + (trendList[indexPath.row].backdropPath ?? ""))
         cell.posterImageView.kf.setImage(with: url)
         cell.posterImageView.contentMode = .scaleAspectFill
         
-        cell.trendTitleLabel.text = trendMovieList[indexPath.row].movieTitle
-        cell.overviewLabel.text = trendMovieList[indexPath.row].overview
+        cell.trendTitleLabel.text = trendList[indexPath.row].title
+        cell.overviewLabel.text = trendList[indexPath.row].overview
         
         return cell
     }
@@ -58,7 +66,7 @@ extension TrendViewController: UITableViewDelegate, UITableViewDataSource {
         let MainSB = UIStoryboard(name: "Main", bundle: nil)
         guard let detailVC = MainSB.instantiateViewController(withIdentifier: DetailViewController.identifier) as? DetailViewController else { return }
         
-        detailVC.movie = trendMovieList[indexPath.row]
+        detailVC.movie = trendList[indexPath.row]
         
         navigationController?.pushViewController(detailVC, animated: true)
         
@@ -73,7 +81,7 @@ extension TrendViewController: UITableViewDataSourcePrefetching {
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         
         for indexPath in indexPaths {
-            if trendMovieList.count - 1 == indexPath.row && page < 5 {
+            if trendList.count - 1 == indexPath.row && page < 5 {
                 page += 1
                 callRequest(page: page)
             }
