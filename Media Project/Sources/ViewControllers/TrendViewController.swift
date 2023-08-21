@@ -57,6 +57,7 @@ extension TrendViewController: UITableViewDelegate, UITableViewDataSource {
         cell.posterImageView.contentMode = .scaleAspectFill
         
         cell.trendTitleLabel.text = trendList[indexPath.row].title
+        cell.originalTitleLabel.text = trendList[indexPath.row].originalTitle
         cell.overviewLabel.text = trendList[indexPath.row].overview
         
         return cell

@@ -18,6 +18,7 @@ class TrendTableViewCell: UITableViewCell {
     @IBOutlet var detailLabel: UILabel!
     @IBOutlet var detailImageView: UIImageView!
     @IBOutlet var backView: UIView!
+    @IBOutlet var originalTitleLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -41,6 +42,8 @@ class TrendTableViewCell: UITableViewCell {
         genreLabel.font = .boldSystemFont(ofSize: 20)
         
         trendTitleLabel.font = .boldSystemFont(ofSize: 20)
+        originalTitleLabel.font = .boldSystemFont(ofSize: 16)
+        originalTitleLabel.textColor = .gray
         
         overviewLabel.textColor = .gray
         overviewLabel.font = .systemFont(ofSize: 13)
