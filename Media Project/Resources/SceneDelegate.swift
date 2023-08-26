@@ -18,9 +18,26 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
-        let vc = IntroViewController()
-        window?.rootViewController = vc
+        
+        //Debug
+//        UserDefaultsHelper.shared.isLaunched = false
+        
+        let isLaunched = UserDefaultsHelper.shared.isLaunched
+        let mainSB = UIStoryboard(name: "Main", bundle: nil)
+        //처음 실행 화면: introVC
+        if isLaunched == false {
+            let introVC = IntroViewController()
+            window?.rootViewController = introVC
+        } else {
+            //트루면 trendVC
+            guard let trendVC = mainSB.instantiateViewController(withIdentifier:  TrendViewController.identifier) as? TrendViewController else {
+                return
+            }
+            let nav = UINavigationController(rootViewController: trendVC)
+            window?.rootViewController = nav
+        }
         window?.makeKeyAndVisible()
+        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

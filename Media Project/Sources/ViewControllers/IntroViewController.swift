@@ -135,7 +135,17 @@ class ThirdViewController: UIViewController {
 extension UIViewController {
     
     @objc func skipAndStartButtonClicked() {
-        print("클릭됨")
+        UserDefaultsHelper.shared.isLaunched = true
+        
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        guard let vc = sb.instantiateViewController(withIdentifier: TrendViewController.identifier) as? TrendViewController else { return }
+        let nav = UINavigationController(rootViewController: vc)
+        
+        nav.modalTransitionStyle = .crossDissolve
+        nav.modalPresentationStyle = .fullScreen
+        
+        present(nav, animated: true)
+        
     }
     
 }
