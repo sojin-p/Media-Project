@@ -54,14 +54,9 @@ class DetailViewController: BaseViewController {
         detailTableView.delegate = self
         detailTableView.dataSource = self
         detailTableView.register(DetailTableViewCell.self, forCellReuseIdentifier: DetailTableViewCell.identifier)
+        detailTableView.register(CastTableViewCell.self, forCellReuseIdentifier: CastTableViewCell.identifier)
         
-        setNib()
         callRequest(id: movie.id)
-    }
-    
-    func setNib() {
-        let castNib = UINib(nibName: CastTableViewCell.identifier, bundle: nil)
-        detailTableView.register(castNib, forCellReuseIdentifier: CastTableViewCell.identifier)
     }
     
 }
