@@ -17,6 +17,7 @@
 		2356E50B2A99F9DE000DB64F /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2356E50A2A99F9DE000DB64F /* SnapKit */; };
 		2356E5132A9A0A11000DB64F /* Extension+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2356E5122A9A0A11000DB64F /* Extension+UIViewController.swift */; };
 		2356E51A2A9A1089000DB64F /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2356E5192A9A1089000DB64F /* UserDefaultsHelper.swift */; };
+		2356E5512A9CA3AB000DB64F /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2356E5502A9CA3AB000DB64F /* BaseViewController.swift */; };
 		235878B02A86348000861B01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235878AF2A86348000861B01 /* AppDelegate.swift */; };
 		235878B22A86348000861B01 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235878B12A86348000861B01 /* SceneDelegate.swift */; };
 		235878B42A86348000861B01 /* TrendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235878B32A86348000861B01 /* TrendViewController.swift */; };
@@ -54,6 +55,7 @@
 		2356E5072A99F87D000DB64F /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		2356E5122A9A0A11000DB64F /* Extension+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIViewController.swift"; sourceTree = "<group>"; };
 		2356E5192A9A1089000DB64F /* UserDefaultsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelper.swift; sourceTree = "<group>"; };
+		2356E5502A9CA3AB000DB64F /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		235878AC2A86348000861B01 /* Media Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Media Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		235878AF2A86348000861B01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		235878B12A86348000861B01 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -117,6 +119,14 @@
 				235878C72A87121C00861B01 /* ReusableViewProtocol.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		2356E54F2A9CA391000DB64F /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				2356E5502A9CA3AB000DB64F /* BaseViewController.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 		235878A32A86348000861B01 = {
@@ -186,6 +196,7 @@
 		235878ED2A87B53100861B01 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				2356E54F2A9CA391000DB64F /* Base */,
 				235878EE2A87B53900861B01 /* ViewControllers */,
 				235878EF2A87B54A00861B01 /* Cells */,
 				2356E50C2A99FA0D000DB64F /* CustomClass */,
@@ -322,6 +333,7 @@
 				235878DF2A87789600861B01 /* DetailViewController.swift in Sources */,
 				235878D42A873B1B00861B01 /* Movie.swift in Sources */,
 				2356E51A2A9A1089000DB64F /* UserDefaultsHelper.swift in Sources */,
+				2356E5512A9CA3AB000DB64F /* BaseViewController.swift in Sources */,
 				2356E49C2A909DF0000DB64F /* MovieCollectionViewCell.swift in Sources */,
 				235878E92A87A65600861B01 /* Cast.swift in Sources */,
 				2356E4992A909C7C000DB64F /* MovieViewController.swift in Sources */,

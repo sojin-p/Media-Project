@@ -6,9 +6,8 @@
 //
 
 import UIKit
-import Kingfisher
 
-class TrendViewController: UIViewController {
+class TrendViewController: BaseViewController {
 
     @IBOutlet var trendTableView: UITableView!
     
@@ -23,7 +22,6 @@ class TrendViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setUI()
         callRequest(page: page)
         
     }
@@ -33,6 +31,21 @@ class TrendViewController: UIViewController {
             self.trendList.append(contentsOf: movie.results)
             self.trendTableView.reloadData()
         }
+    }
+    
+    override func configureView() {
+        super.configureView()
+        
+        title = "타이틀"
+
+        trendTableView.delegate = self
+        trendTableView.dataSource = self
+        trendTableView.prefetchDataSource = self
+        trendTableView.estimatedRowHeight = 350
+        trendTableView.rowHeight = UITableView.automaticDimension
+
+        let nib = UINib(nibName: TrendTableViewCell.identifier, bundle: nil)
+        trendTableView.register(nib, forCellReuseIdentifier: TrendTableViewCell.identifier)
     }
 
 }
@@ -89,26 +102,4 @@ extension TrendViewController: UITableViewDataSourcePrefetching {
         }
     }
     
-}
-
-extension TrendViewController {
-    
-    func setUI() {
-        title = "타이틀"
-        
-        trendTableView.delegate = self
-        trendTableView.dataSource = self
-        trendTableView.prefetchDataSource = self
-        trendTableView.estimatedRowHeight = 350
-        trendTableView.rowHeight = UITableView.automaticDimension
-        
-        trendTableView.separatorColor = .clear
-        
-        setNib()
-    }
-    
-    func setNib() {
-        let nib = UINib(nibName: TrendTableViewCell.identifier, bundle: nil)
-        trendTableView.register(nib, forCellReuseIdentifier: TrendTableViewCell.identifier)
-    }
 }

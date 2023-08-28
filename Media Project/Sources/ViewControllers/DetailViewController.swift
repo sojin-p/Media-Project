@@ -6,9 +6,8 @@
 //
 
 import UIKit
-import Kingfisher
 
-class DetailViewController: UIViewController {
+class DetailViewController: BaseViewController {
 
     @IBOutlet var detailTableView: UITableView!
     @IBOutlet var backdropImageView: UIImageView!
@@ -23,8 +22,6 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setUI()
-
     }
     
     func callRequest(id: Int) {
@@ -32,6 +29,40 @@ class DetailViewController: UIViewController {
             self.cast = cast
             self.detailTableView.reloadData()
         }
+    }
+    
+    override func configureView() {
+        super.configureView()
+        
+        guard let movie else { return }
+        
+        title = "출연/제작"
+        
+        titleLabel.text = movie.title
+        titleLabel.textColor = .white
+        titleLabel.font = .boldSystemFont(ofSize: 17)
+        
+        let backdrop = URL(string: URL.imageURL + (movie.backdropPath ?? ""))
+        backdropImageView.kf.setImage(with: backdrop)
+        backdropImageView.contentMode = .scaleAspectFill
+        
+        let poster = URL(string: URL.imageURL + (movie.posterPath ?? ""))
+        posterImageView.kf.setImage(with: poster)
+        posterImageView.contentMode = .scaleAspectFill
+        
+        detailTableView.delegate = self
+        detailTableView.dataSource = self
+        
+        setNib()
+        callRequest(id: movie.id)
+    }
+    
+    func setNib() {
+        let detailNib = UINib(nibName: DetailTableViewCell.identifier, bundle: nil)
+        detailTableView.register(detailNib, forCellReuseIdentifier: DetailTableViewCell.identifier)
+        
+        let castNib = UINib(nibName: CastTableViewCell.identifier, bundle: nil)
+        detailTableView.register(castNib, forCellReuseIdentifier: CastTableViewCell.identifier)
     }
     
 }
@@ -109,40 +140,5 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
         }
         tableView.reloadData()
         
-    }
-}
-
-extension DetailViewController {
-    
-    func setUI() {
-        guard let movie else { return }
-        
-        title = "출연/제작"
-        
-        titleLabel.text = movie.title
-        titleLabel.textColor = .white
-        titleLabel.font = .boldSystemFont(ofSize: 17)
-        
-        let backdrop = URL(string: URL.imageURL + (movie.backdropPath ?? ""))
-        backdropImageView.kf.setImage(with: backdrop)
-        backdropImageView.contentMode = .scaleAspectFill
-        
-        let poster = URL(string: URL.imageURL + (movie.posterPath ?? ""))
-        posterImageView.kf.setImage(with: poster)
-        posterImageView.contentMode = .scaleAspectFill
-        
-        detailTableView.delegate = self
-        detailTableView.dataSource = self
-        
-        setNib()
-        callRequest(id: movie.id ?? 0)
-    }
-    
-    func setNib() {
-        let detailNib = UINib(nibName: DetailTableViewCell.identifier, bundle: nil)
-        detailTableView.register(detailNib, forCellReuseIdentifier: DetailTableViewCell.identifier)
-        
-        let castNib = UINib(nibName: CastTableViewCell.identifier, bundle: nil)
-        detailTableView.register(castNib, forCellReuseIdentifier: CastTableViewCell.identifier)
     }
 }
