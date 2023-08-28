@@ -15,7 +15,7 @@ class DetailViewController: BaseViewController {
     @IBOutlet var titleLabel: UILabel!
     
     let sectionTitleList = ["OverView", "Cast"]
-    var isClicked: Bool = false
+    var isExpand: Bool = false
     var movie: Result?
     var cast: [Cast] = []
     
@@ -50,17 +50,16 @@ class DetailViewController: BaseViewController {
         posterImageView.kf.setImage(with: poster)
         posterImageView.contentMode = .scaleAspectFill
         
+//        detailTableView.rowHeight = UITableView.automaticDimension
         detailTableView.delegate = self
         detailTableView.dataSource = self
+        detailTableView.register(DetailTableViewCell.self, forCellReuseIdentifier: DetailTableViewCell.identifier)
         
         setNib()
         callRequest(id: movie.id)
     }
     
     func setNib() {
-        let detailNib = UINib(nibName: DetailTableViewCell.identifier, bundle: nil)
-        detailTableView.register(detailNib, forCellReuseIdentifier: DetailTableViewCell.identifier)
-        
         let castNib = UINib(nibName: CastTableViewCell.identifier, bundle: nil)
         detailTableView.register(castNib, forCellReuseIdentifier: CastTableViewCell.identifier)
     }
@@ -93,12 +92,14 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
         case 0:
             guard let detailCell = tableView.dequeueReusableCell(withIdentifier: DetailTableViewCell.identifier) as? DetailTableViewCell else { return UITableViewCell() }
             
-            detailCell.overviewTextView.text = movie?.overview
+            detailCell.overviewLabel.text = movie?.overview
             
-            if isClicked {
-                detailCell.moreImageView.image = UIImage(systemName: "chevron.up")
+            if isExpand {
+                detailCell.expandImageView.image = UIImage(systemName: "chevron.up")
+                detailCell.overviewLabel.numberOfLines = 0
             } else {
-                detailCell.moreImageView.image = UIImage(systemName: "chevron.down")
+                detailCell.expandImageView.image = UIImage(systemName: "chevron.down")
+                detailCell.overviewLabel.numberOfLines = 2
             }
             
             return detailCell
@@ -124,8 +125,8 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 
-        if indexPath.section == 0, isClicked {
-            return 200
+        if indexPath.section == 0, isExpand {
+            return UITableView.automaticDimension
         } else {
             return 90
         }
@@ -136,9 +137,9 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if indexPath.section == 0 {
-            isClicked.toggle()
+            isExpand.toggle()
         }
-        tableView.reloadData()
+        tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
         
     }
 }
