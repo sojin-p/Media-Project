@@ -20,6 +20,8 @@
 		2356E5532A9CAA6B000DB64F /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2356E5522A9CAA6B000DB64F /* BaseCollectionViewCell.swift */; };
 		2356E5582A9CAB92000DB64F /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2356E5572A9CAB92000DB64F /* BaseTableViewCell.swift */; };
 		2356E55A2A9CB50A000DB64F /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2356E5592A9CB50A000DB64F /* UserDefaultsHelper.swift */; };
+		2356E55C2A9CB9DF000DB64F /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2356E55B2A9CB9DF000DB64F /* BaseView.swift */; };
+		2356E55E2A9CBA99000DB64F /* DetailCastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2356E55D2A9CBA99000DB64F /* DetailCastView.swift */; };
 		235878B02A86348000861B01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235878AF2A86348000861B01 /* AppDelegate.swift */; };
 		235878B22A86348000861B01 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235878B12A86348000861B01 /* SceneDelegate.swift */; };
 		235878B42A86348000861B01 /* TrendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235878B32A86348000861B01 /* TrendViewController.swift */; };
@@ -58,6 +60,8 @@
 		2356E5522A9CAA6B000DB64F /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		2356E5572A9CAB92000DB64F /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		2356E5592A9CB50A000DB64F /* UserDefaultsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelper.swift; sourceTree = "<group>"; };
+		2356E55B2A9CB9DF000DB64F /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		2356E55D2A9CBA99000DB64F /* DetailCastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCastView.swift; sourceTree = "<group>"; };
 		235878AC2A86348000861B01 /* Media Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Media Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		235878AF2A86348000861B01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		235878B12A86348000861B01 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -127,6 +131,7 @@
 				2356E5502A9CA3AB000DB64F /* BaseViewController.swift */,
 				2356E5522A9CAA6B000DB64F /* BaseCollectionViewCell.swift */,
 				2356E5572A9CAB92000DB64F /* BaseTableViewCell.swift */,
+				2356E55B2A9CB9DF000DB64F /* BaseView.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -145,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				235878DE2A87789600861B01 /* DetailViewController.swift */,
+				2356E55D2A9CBA99000DB64F /* DetailCastView.swift */,
 				235878E02A8779E800861B01 /* DetailTableViewCell.swift */,
 				235878E42A877B0700861B01 /* CastTableViewCell.swift */,
 			);
@@ -345,10 +351,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				235878DF2A87789600861B01 /* DetailViewController.swift in Sources */,
+				2356E55C2A9CB9DF000DB64F /* BaseView.swift in Sources */,
 				235878D42A873B1B00861B01 /* Movie.swift in Sources */,
 				2356E5582A9CAB92000DB64F /* BaseTableViewCell.swift in Sources */,
 				2356E5512A9CA3AB000DB64F /* BaseViewController.swift in Sources */,
 				2356E49C2A909DF0000DB64F /* MovieCollectionViewCell.swift in Sources */,
+				2356E55E2A9CBA99000DB64F /* DetailCastView.swift in Sources */,
 				235878E92A87A65600861B01 /* Cast.swift in Sources */,
 				2356E4992A909C7C000DB64F /* MovieViewController.swift in Sources */,
 				235878B42A86348000861B01 /* TrendViewController.swift in Sources */,

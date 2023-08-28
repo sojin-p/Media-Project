@@ -77,8 +77,8 @@ extension TrendViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let MainSB = UIStoryboard(name: "Main", bundle: nil)
-        guard let detailVC = MainSB.instantiateViewController(withIdentifier: DetailViewController.identifier) as? DetailViewController else { return }
+        
+        let detailVC = DetailViewController()
         
         detailVC.movie = trendList[indexPath.row]
         

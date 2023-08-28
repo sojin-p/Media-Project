@@ -8,16 +8,18 @@
 import UIKit
 
 class DetailViewController: BaseViewController {
-
-    @IBOutlet var detailTableView: UITableView!
-    @IBOutlet var backdropImageView: UIImageView!
-    @IBOutlet var posterImageView: UIImageView!
-    @IBOutlet var titleLabel: UILabel!
+    
+    let mainView = DetailCastView()
     
     let sectionTitleList = ["OverView", "Cast"]
     var isExpand: Bool = false
     var movie: Result?
     var cast: [Cast] = []
+    
+    override func loadView() {
+        super.loadView()
+        self.view = mainView
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +29,7 @@ class DetailViewController: BaseViewController {
     func callRequest(id: Int) {
         TmdbAPIManager.shared.callCreditRequest(id: id) { cast in
             self.cast = cast
-            self.detailTableView.reloadData()
+            self.mainView.tableView.reloadData()
         }
     }
     
@@ -38,23 +40,16 @@ class DetailViewController: BaseViewController {
         
         title = "출연/제작"
         
-        titleLabel.text = movie.title
-        titleLabel.textColor = .white
-        titleLabel.font = .boldSystemFont(ofSize: 17)
+        mainView.titleLabel.text = movie.title
         
         let backdrop = URL(string: URL.imageURL + (movie.backdropPath ?? ""))
-        backdropImageView.kf.setImage(with: backdrop)
-        backdropImageView.contentMode = .scaleAspectFill
+        mainView.backdropImageView.kf.setImage(with: backdrop)
         
         let poster = URL(string: URL.imageURL + (movie.posterPath ?? ""))
-        posterImageView.kf.setImage(with: poster)
-        posterImageView.contentMode = .scaleAspectFill
+        mainView.posterImageView.kf.setImage(with: poster)
         
-//        detailTableView.rowHeight = UITableView.automaticDimension
-        detailTableView.delegate = self
-        detailTableView.dataSource = self
-        detailTableView.register(DetailTableViewCell.self, forCellReuseIdentifier: DetailTableViewCell.identifier)
-        detailTableView.register(CastTableViewCell.self, forCellReuseIdentifier: CastTableViewCell.identifier)
+        mainView.tableView.delegate = self
+        mainView.tableView.dataSource = self
         
         callRequest(id: movie.id)
     }
