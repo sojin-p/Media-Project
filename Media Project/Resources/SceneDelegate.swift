@@ -30,10 +30,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window?.rootViewController = introVC
         } else {
             //트루면 trendVC
-            guard let trendVC = mainSB.instantiateViewController(withIdentifier:  TrendViewController.identifier) as? TrendViewController else {
-                return
-            }
-            let nav = UINavigationController(rootViewController: trendVC)
+//            guard let trendVC = mainSB.instantiateViewController(withIdentifier:  TrendViewController.identifier) as? TrendViewController else {
+//                return
+//            }
+            
+            let nav = UINavigationController(rootViewController: ProfileViewController())
             window?.rootViewController = nav
         }
         window?.makeKeyAndVisible()

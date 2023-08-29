@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		234BC7012A9DFFDA0062F776 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234BC7002A9DFFDA0062F776 /* ProfileViewController.swift */; };
+		234BC7042A9E00220062F776 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234BC7032A9E00220062F776 /* ProfileView.swift */; };
 		2356E4992A909C7C000DB64F /* MovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2356E4982A909C7C000DB64F /* MovieViewController.swift */; };
 		2356E49C2A909DF0000DB64F /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2356E49A2A909DF0000DB64F /* MovieCollectionViewCell.swift */; };
 		2356E49D2A909DF0000DB64F /* MovieCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2356E49B2A909DF0000DB64F /* MovieCollectionViewCell.xib */; };
@@ -45,9 +47,13 @@
 		235878E62A877B0700861B01 /* CastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235878E42A877B0700861B01 /* CastTableViewCell.swift */; };
 		235878E92A87A65600861B01 /* Cast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235878E82A87A65500861B01 /* Cast.swift */; };
 		23CB122C2A8B92E80023A9DF /* MovieTrendData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CB122B2A8B92E80023A9DF /* MovieTrendData.swift */; };
+		23EEEF332A9E028700A0A712 /* textFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EEEF322A9E028700A0A712 /* textFieldViewController.swift */; };
+		23EEEF352A9E02BD00A0A712 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EEEF342A9E02BD00A0A712 /* ProfileTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		234BC7002A9DFFDA0062F776 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		234BC7032A9E00220062F776 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		2356E4982A909C7C000DB64F /* MovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MovieViewController.swift; path = "Media Project/Sources/ViewControllers/Movie/MovieViewController.swift"; sourceTree = SOURCE_ROOT; };
 		2356E49A2A909DF0000DB64F /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
 		2356E49B2A909DF0000DB64F /* MovieCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -84,6 +90,8 @@
 		235878E42A877B0700861B01 /* CastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastTableViewCell.swift; sourceTree = "<group>"; };
 		235878E82A87A65500861B01 /* Cast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cast.swift; sourceTree = "<group>"; };
 		23CB122B2A8B92E80023A9DF /* MovieTrendData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTrendData.swift; sourceTree = "<group>"; };
+		23EEEF322A9E028700A0A712 /* textFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = textFieldViewController.swift; sourceTree = "<group>"; };
+		23EEEF342A9E02BD00A0A712 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +109,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		234BC7022A9DFFDE0062F776 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				234BC7002A9DFFDA0062F776 /* ProfileViewController.swift */,
+				234BC7032A9E00220062F776 /* ProfileView.swift */,
+				23EEEF342A9E02BD00A0A712 /* ProfileTableViewCell.swift */,
+				23EEEF322A9E028700A0A712 /* textFieldViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		2356E50C2A99FA0D000DB64F /* CustomClass */ = {
 			isa = PBXGroup;
 			children = (
@@ -247,6 +266,7 @@
 			isa = PBXGroup;
 			children = (
 				2356E5072A99F87D000DB64F /* IntroViewController.swift */,
+				234BC7022A9DFFDE0062F776 /* Profile */,
 				2356E5542A9CAAA5000DB64F /* Trend */,
 				2356E5552A9CAAB3000DB64F /* DeTail(Cast) */,
 				2356E5562A9CAB0A000DB64F /* Movie */,
@@ -352,6 +372,8 @@
 			files = (
 				235878DF2A87789600861B01 /* DetailViewController.swift in Sources */,
 				2356E55C2A9CB9DF000DB64F /* BaseView.swift in Sources */,
+				23EEEF332A9E028700A0A712 /* textFieldViewController.swift in Sources */,
+				23EEEF352A9E02BD00A0A712 /* ProfileTableViewCell.swift in Sources */,
 				235878D42A873B1B00861B01 /* Movie.swift in Sources */,
 				2356E5582A9CAB92000DB64F /* BaseTableViewCell.swift in Sources */,
 				2356E5512A9CA3AB000DB64F /* BaseViewController.swift in Sources */,
@@ -361,6 +383,7 @@
 				2356E4992A909C7C000DB64F /* MovieViewController.swift in Sources */,
 				235878B42A86348000861B01 /* TrendViewController.swift in Sources */,
 				235878D62A873C2500861B01 /* Endpoint.swift in Sources */,
+				234BC7042A9E00220062F776 /* ProfileView.swift in Sources */,
 				2356E4A02A90A99A000DB64F /* HeaderMovieCollectionReusableView.swift in Sources */,
 				235878DA2A8740F500861B01 /* TmdbAPIManager.swift in Sources */,
 				235878C82A87121C00861B01 /* ReusableViewProtocol.swift in Sources */,
@@ -368,6 +391,7 @@
 				2356E55A2A9CB50A000DB64F /* UserDefaultsHelper.swift in Sources */,
 				235878E62A877B0700861B01 /* CastTableViewCell.swift in Sources */,
 				235878B02A86348000861B01 /* AppDelegate.swift in Sources */,
+				234BC7012A9DFFDA0062F776 /* ProfileViewController.swift in Sources */,
 				2356E4A72A90EC73000DB64F /* MovieVideoData.swift in Sources */,
 				235878D82A873C6600861B01 /* URL+Extension.swift in Sources */,
 				2356E5532A9CAA6B000DB64F /* BaseCollectionViewCell.swift in Sources */,

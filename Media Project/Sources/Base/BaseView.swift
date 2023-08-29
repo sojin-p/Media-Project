@@ -19,7 +19,9 @@ class BaseView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureView() { }
+    func configureView() {
+        backgroundColor = .white
+    }
     
     func setConstraints() { }
     

@@ -45,7 +45,8 @@ class DetailCastView: BaseView {
     }()
     
     override func configureView() {
-        backgroundColor = .white
+        super.configureView()
+        
         addSubview(tableView)
         tableView.tableHeaderView = backdropImageView
         backdropImageView.addSubview(alphaView)
