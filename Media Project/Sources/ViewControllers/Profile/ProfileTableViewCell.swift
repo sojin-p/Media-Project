@@ -11,21 +11,19 @@ class ProfileTableViewCell: BaseTableViewCell {
     
     let titleLabel = {
         let view = UILabel()
-        view.backgroundColor = .systemYellow
         return view
     }()
     
-    let textField = {
-        let view = UITextField()
-        view.borderStyle = .none
-        view.placeholder = "testtest"
-        view.backgroundColor = .brown
+    let textFieldLabel = {
+        let view = UILabel()
+        view.text = "testtest"
+        view.textColor = .systemGray3
         return view
     }()
     
     override func configureView() {
         contentView.addSubview(titleLabel)
-        contentView.addSubview(textField)
+        contentView.addSubview(textFieldLabel)
     }
     
     override func setConstraints() {
@@ -35,7 +33,7 @@ class ProfileTableViewCell: BaseTableViewCell {
             make.width.equalToSuperview().multipliedBy(0.25)
         }
         
-        textField.snp.makeConstraints { make in
+        textFieldLabel.snp.makeConstraints { make in
             make.verticalEdges.equalTo(titleLabel)
             make.trailing.equalToSuperview().inset(20)
             make.leading.equalTo(titleLabel.snp.trailing).offset(12)

@@ -18,10 +18,13 @@ class ProfileViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+    }
+    
+    override func configureView() {
+        title = "프로필 편집"
         mainView.tableView.delegate = self
         mainView.tableView.dataSource = self
         mainView.tableView.rowHeight = 50
-        
     }
     
 }
@@ -38,5 +41,9 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         cell.titleLabel.text = "테스트입니다"
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        navigationController?.pushViewController(textFieldViewController(), animated: true)
     }
 }
