@@ -25,7 +25,10 @@ class TextFieldViewController: BaseViewController {
         super.viewDidDisappear(animated)
         
         guard let text = textField.text else { return }
+        
         delegate?.receiveNickname(nickname: text)
+        
+        NotificationCenter.default.post(name: .userName, object: nil, userInfo: ["name": text])
         
     }
     

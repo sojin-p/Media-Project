@@ -15,7 +15,7 @@ class ProfileViewController: BaseViewController {
     
     let mainView = ProfileView()
     var titleList = ["이름", "사용자 이름", "성별 대명사", "소개", "링크", "성별"]
-    var contentList: [String] = []
+    var contentList: [String] = ["이름", "사용자 이름", "성별 대명사", "소개", "링크", "성별"]
     
     override func loadView() {
         self.view = mainView
@@ -26,11 +26,27 @@ class ProfileViewController: BaseViewController {
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        NotificationCenter.default.removeObserver(self, name: .userName, object: nil)
+        
+    }
+    
     override func configureView() {
         title = "프로필 편집"
         mainView.tableView.delegate = self
         mainView.tableView.dataSource = self
         mainView.tableView.rowHeight = 50
+    }
+    
+    @objc func doneUserNameNotification(notification: NSNotification) {
+        print("doneUserNameNotification 값 전달")
+        
+        if let name = notification.userInfo?["name"] as? String {
+            contentList.insert(name, at: 1)
+            mainView.tableView.reloadRows(at: [IndexPath(row: 1, section: 0)], with: .none)
+        }
     }
     
 }
@@ -47,7 +63,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.titleLabel.text = titleList[indexPath.row]
         
-        if contentList.isEmpty {
+        if contentList == titleList {
             cell.textFieldLabel.text = titleList[indexPath.row]
         } else {
             cell.textFieldLabel.text = contentList[indexPath.row]
@@ -63,6 +79,10 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         
         if indexPath.row == 0 {
             vc.delegate = self
+        } else if indexPath.row == 1 {
+            NotificationCenter.default.addObserver(self, selector: #selector(doneUserNameNotification), name: .userName, object: nil)
+        } else {
+            print("쉽지않네")
         }
         
         navigationController?.pushViewController(vc, animated: true)
