@@ -61,7 +61,9 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         
         let vc = TextFieldViewController()
         
-        vc.delegate = self
+        if indexPath.row == 0 {
+            vc.delegate = self
+        }
         
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -70,7 +72,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
 extension ProfileViewController: PassNicknameDelegate {
     
     func receiveNickname(nickname: String) {
-        print("받았나?", nickname)
+        print("protocol 값 전달", nickname)
         contentList.insert(nickname, at: 0)
         mainView.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
     }
