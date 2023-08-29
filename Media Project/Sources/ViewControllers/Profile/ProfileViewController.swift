@@ -44,8 +44,8 @@ class ProfileViewController: BaseViewController {
         print("doneUserNameNotification 값 전달")
         
         if let name = notification.userInfo?["name"] as? String {
-            contentList.insert(name, at: 1)
-            mainView.tableView.reloadRows(at: [IndexPath(row: 1, section: 0)], with: .none)
+            contentList.insert(name, at: 0)
+            mainView.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
         }
     }
     
@@ -78,9 +78,18 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         let vc = TextFieldViewController()
         
         if indexPath.row == 0 {
-            vc.delegate = self
-        } else if indexPath.row == 1 {
             NotificationCenter.default.addObserver(self, selector: #selector(doneUserNameNotification), name: .userName, object: nil)
+            
+        } else if indexPath.row == 1 {
+            vc.delegate = self
+            
+        } else if indexPath.row == 2 {
+            vc.completionHandler = { text in
+                self.contentList.insert(text, at: 2)
+                self.mainView.tableView.reloadRows(at: [IndexPath(row: 2, section: 0)], with: .none)
+                print("closure 값 전달")
+            }
+            
         } else {
             print("쉽지않네")
         }
@@ -93,8 +102,8 @@ extension ProfileViewController: PassNicknameDelegate {
     
     func receiveNickname(nickname: String) {
         print("protocol 값 전달", nickname)
-        contentList.insert(nickname, at: 0)
-        mainView.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
+        contentList.insert(nickname, at: 1)
+        mainView.tableView.reloadRows(at: [IndexPath(row: 1, section: 0)], with: .none)
     }
     
 }
