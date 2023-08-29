@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		234B593A2A9E13560030160E /* Extension+Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234B59392A9E13560030160E /* Extension+Notification.swift */; };
 		234BC7012A9DFFDA0062F776 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234BC7002A9DFFDA0062F776 /* ProfileViewController.swift */; };
 		234BC7042A9E00220062F776 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234BC7032A9E00220062F776 /* ProfileView.swift */; };
 		2356E4992A909C7C000DB64F /* MovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2356E4982A909C7C000DB64F /* MovieViewController.swift */; };
@@ -47,11 +48,12 @@
 		235878E62A877B0700861B01 /* CastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235878E42A877B0700861B01 /* CastTableViewCell.swift */; };
 		235878E92A87A65600861B01 /* Cast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235878E82A87A65500861B01 /* Cast.swift */; };
 		23CB122C2A8B92E80023A9DF /* MovieTrendData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CB122B2A8B92E80023A9DF /* MovieTrendData.swift */; };
-		23EEEF332A9E028700A0A712 /* textFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EEEF322A9E028700A0A712 /* textFieldViewController.swift */; };
+		23EEEF332A9E028700A0A712 /* TextFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EEEF322A9E028700A0A712 /* TextFieldViewController.swift */; };
 		23EEEF352A9E02BD00A0A712 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EEEF342A9E02BD00A0A712 /* ProfileTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		234B59392A9E13560030160E /* Extension+Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Notification.swift"; sourceTree = "<group>"; };
 		234BC7002A9DFFDA0062F776 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		234BC7032A9E00220062F776 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		2356E4982A909C7C000DB64F /* MovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MovieViewController.swift; path = "Media Project/Sources/ViewControllers/Movie/MovieViewController.swift"; sourceTree = SOURCE_ROOT; };
@@ -90,7 +92,7 @@
 		235878E42A877B0700861B01 /* CastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastTableViewCell.swift; sourceTree = "<group>"; };
 		235878E82A87A65500861B01 /* Cast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cast.swift; sourceTree = "<group>"; };
 		23CB122B2A8B92E80023A9DF /* MovieTrendData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTrendData.swift; sourceTree = "<group>"; };
-		23EEEF322A9E028700A0A712 /* textFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = textFieldViewController.swift; sourceTree = "<group>"; };
+		23EEEF322A9E028700A0A712 /* TextFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldViewController.swift; sourceTree = "<group>"; };
 		23EEEF342A9E02BD00A0A712 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -115,7 +117,7 @@
 				234BC7002A9DFFDA0062F776 /* ProfileViewController.swift */,
 				234BC7032A9E00220062F776 /* ProfileView.swift */,
 				23EEEF342A9E02BD00A0A712 /* ProfileTableViewCell.swift */,
-				23EEEF322A9E028700A0A712 /* textFieldViewController.swift */,
+				23EEEF322A9E028700A0A712 /* TextFieldViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -132,6 +134,7 @@
 			children = (
 				235878D72A873C6600861B01 /* URL+Extension.swift */,
 				2356E5122A9A0A11000DB64F /* Extension+UIViewController.swift */,
+				234B59392A9E13560030160E /* Extension+Notification.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -372,10 +375,11 @@
 			files = (
 				235878DF2A87789600861B01 /* DetailViewController.swift in Sources */,
 				2356E55C2A9CB9DF000DB64F /* BaseView.swift in Sources */,
-				23EEEF332A9E028700A0A712 /* textFieldViewController.swift in Sources */,
+				23EEEF332A9E028700A0A712 /* TextFieldViewController.swift in Sources */,
 				23EEEF352A9E02BD00A0A712 /* ProfileTableViewCell.swift in Sources */,
 				235878D42A873B1B00861B01 /* Movie.swift in Sources */,
 				2356E5582A9CAB92000DB64F /* BaseTableViewCell.swift in Sources */,
+				234B593A2A9E13560030160E /* Extension+Notification.swift in Sources */,
 				2356E5512A9CA3AB000DB64F /* BaseViewController.swift in Sources */,
 				2356E49C2A909DF0000DB64F /* MovieCollectionViewCell.swift in Sources */,
 				2356E55E2A9CBA99000DB64F /* DetailCastView.swift in Sources */,
