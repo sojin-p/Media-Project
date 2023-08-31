@@ -34,7 +34,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //                return
 //            }
             
-            let nav = UINavigationController(rootViewController: ProfileViewController())
+            let nav = UINavigationController(rootViewController: TrendViewController())
             window?.rootViewController = nav
         }
         window?.makeKeyAndVisible()

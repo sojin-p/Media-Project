@@ -9,15 +9,13 @@ import UIKit
 
 class TrendViewController: BaseViewController {
 
-    @IBOutlet var trendTableView: UITableView!
-    
-    let genres = [ 28: "Action", 12: "Adventure", 16: "Animation", 35: "Comedy", 80: "Crime",
-                    99: "Documentary", 18: "Drama", 10751: "Family", 14: "Fantasy", 36: "History",
-                    27: "Horror", 10402: "Music", 9648: "Mystery", 10749: "Romance", 878: "Science Fiction",
-                    10770: "TV Movie", 53: "Thriller", 10752: "War", 37: "Western"
-    ]
+    let mainView = TrendView()
     var trendList: [Result] = []
     var page = 1
+    
+    override func loadView() {
+        self.view = mainView
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +27,7 @@ class TrendViewController: BaseViewController {
     func callRequest(page: Int) {
         TmdbAPIManager.shared.callRequest(type: .movie, page: page) { movie in
             self.trendList.append(contentsOf: movie.results)
-            self.trendTableView.reloadData()
+            self.mainView.tableView.reloadData()
         }
     }
     
@@ -38,14 +36,11 @@ class TrendViewController: BaseViewController {
         
         title = "타이틀"
 
-        trendTableView.delegate = self
-        trendTableView.dataSource = self
-        trendTableView.prefetchDataSource = self
-        trendTableView.estimatedRowHeight = 350
-        trendTableView.rowHeight = UITableView.automaticDimension
-
-        let nib = UINib(nibName: TrendTableViewCell.identifier, bundle: nil)
-        trendTableView.register(nib, forCellReuseIdentifier: TrendTableViewCell.identifier)
+        mainView.tableView.delegate = self
+        mainView.tableView.dataSource = self
+        mainView.tableView.prefetchDataSource = self
+        mainView.tableView.estimatedRowHeight = 400
+        mainView.tableView.rowHeight = UITableView.automaticDimension
     }
 
 }
@@ -59,19 +54,8 @@ extension TrendViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TrendTableViewCell.identifier) as? TrendTableViewCell else { return UITableViewCell() }
         
-        if let genre = genres[trendList[indexPath.row].genreIDS[0]] {
-            cell.genreLabel.text = "#\(genre)"
-        }
-        
-        cell.releaseDateLabel.text = trendList[indexPath.row].releaseDate
-
-        let url = URL(string: URL.imageURL + (trendList[indexPath.row].backdropPath ?? ""))
-        cell.posterImageView.kf.setImage(with: url)
-        cell.posterImageView.contentMode = .scaleAspectFill
-        
-        cell.trendTitleLabel.text = trendList[indexPath.row].title
-        cell.originalTitleLabel.text = trendList[indexPath.row].originalTitle
-        cell.overviewLabel.text = trendList[indexPath.row].overview
+        let row = trendList[indexPath.row]
+        cell.configureCell(row: row)
         
         return cell
     }
