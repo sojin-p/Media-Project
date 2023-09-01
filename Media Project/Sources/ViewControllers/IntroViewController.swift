@@ -137,8 +137,7 @@ extension UIViewController {
     @objc func skipAndStartButtonClicked() {
         UserDefaultsHelper.shared.isLaunched = true
         
-        let sb = UIStoryboard(name: "Main", bundle: nil)
-        guard let vc = sb.instantiateViewController(withIdentifier: TrendViewController.identifier) as? TrendViewController else { return }
+        let vc = TrendViewController()
         let nav = UINavigationController(rootViewController: vc)
         
         nav.modalTransitionStyle = .crossDissolve

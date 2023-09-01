@@ -23,18 +23,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        UserDefaultsHelper.shared.isLaunched = false
         
         let isLaunched = UserDefaultsHelper.shared.isLaunched
-        let mainSB = UIStoryboard(name: "Main", bundle: nil)
+//        let mainSB = UIStoryboard(name: "Main", bundle: nil)
         //처음 실행 화면: introVC
         if isLaunched == false {
             let introVC = IntroViewController()
             window?.rootViewController = introVC
         } else {
             //트루면 trendVC
-//            guard let trendVC = mainSB.instantiateViewController(withIdentifier:  TrendViewController.identifier) as? TrendViewController else {
-//                return
-//            }
-            
-            let nav = UINavigationController(rootViewController: TrendViewController())
+            let trendVC = TrendViewController()
+            let nav = UINavigationController(rootViewController: trendVC)
             window?.rootViewController = nav
         }
         window?.makeKeyAndVisible()

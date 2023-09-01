@@ -16,19 +16,54 @@ class TmdbAPIManager {
     
     let parameters: Parameters = ["language": "ko"]
 
-    func callRequest(type: Endpoint, page: Int, completionHandler: @escaping (MovieTrend) -> () ) {
+    func callRequest(type: Endpoint, page: Int, completionHandler: @escaping (MovieTrend?) -> Void ) {
 
-        let url = type.requestURL + "&page=\(page)"
+        guard let url = URL(string: type.requestURL + "&page=\(page)") else { return }
+        let request = URLRequest(url: url, timeoutInterval: 10)
 
-        AF.request(url, method: .get, parameters: parameters).validate(statusCode: 200...500)
-            .responseDecodable(of: MovieTrend.self) { response in
-            switch response.result {
-            case .success(let value):
-                completionHandler(value)
-            case .failure(let error):
-                print(error)
+        URLSession.shared.dataTask(with: request) { data, response, error in
+
+            DispatchQueue.main.async {
+
+                if let error {
+                    completionHandler(nil)
+                    print(error)
+                    return
+                }
+
+                guard let response = response as? HTTPURLResponse, (200...500).contains(response.statusCode) else {
+                    completionHandler(nil)
+                    print(error)
+                    return
+                }
+
+                guard let data = data else {
+                    completionHandler(nil)
+                    return
+                }
+
+                do {
+                    let result = try JSONDecoder().decode(MovieTrend.self, from: data)
+                    completionHandler(result)
+                    print(result)
+                } catch {
+                    completionHandler(nil)
+                    print(error)
+                }
             }
-        }
+
+        }.resume() //하ㅏㅏㅏㅏㅏㅏ
+        
+//        let url = type.requestURL + "&page=\(page)"
+//        AF.request(url, method: .get, parameters: parameters).validate(statusCode: 200...500)
+//            .responseDecodable(of: MovieTrend.self) { response in
+//            switch response.result {
+//            case .success(let value):
+//                completionHandler(value)
+//            case .failure(let error):
+//                print(error)
+//            }
+//        }
     }
 
     func callCreditRequest(id: Int, completionHandler: @escaping ([Cast]) -> () ) {

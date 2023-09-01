@@ -19,13 +19,17 @@ class TrendViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print("TrendViewController viewDidLoad")
         callRequest(page: page)
         
     }
     
     func callRequest(page: Int) {
         TmdbAPIManager.shared.callRequest(type: .movie, page: page) { movie in
+            guard let movie = movie else {
+                print("얼럿띄우기")
+                return
+            }
             self.trendList.append(contentsOf: movie.results)
             self.mainView.tableView.reloadData()
         }
@@ -48,10 +52,12 @@ class TrendViewController: BaseViewController {
 extension TrendViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(#function)
         return trendList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        print(#function)
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TrendTableViewCell.identifier) as? TrendTableViewCell else { return UITableViewCell() }
         
         let row = trendList[indexPath.row]
