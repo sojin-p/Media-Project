@@ -7,13 +7,6 @@
 
 import UIKit
 
-enum MediaType {
-    case all
-    case movie
-    case tv
-    case person
-}
-
 class TrendTableViewCell: BaseTableViewCell {
     
     let releaseDateLabel = {
@@ -97,30 +90,39 @@ class TrendTableViewCell: BaseTableViewCell {
     let genres = [ 28: "Action", 12: "Adventure", 16: "Animation", 35: "Comedy", 80: "Crime",
                     99: "Documentary", 18: "Drama", 10751: "Family", 14: "Fantasy", 36: "History",
                     27: "Horror", 10402: "Music", 9648: "Mystery", 10749: "Romance", 878: "Science Fiction",
-                    10770: "TV Movie", 53: "Thriller", 10752: "War", 37: "Western"
+                    10770: "TV Movie", 53: "Thriller", 10752: "War", 37: "Western", 10759: "Action & Adventure",
+                    10762: "Kids", 10763: "News", 10764: "Reality", 10765: "Sci-Fi & Fantasy",
+                    10766: "Soap", 10767: "Talk", 10768: "War & Politics"
     ]
     
     func configureCell(row: TrendResult, type: MediaType) {
         
-        if let genre = genres[row.genreIDS[0]] {
-            genreLabel.text = "#\(genre)"
-        }
-        
-        let url = URL(string: URL.imageURL + (row.backdropPath ?? ""))
-        posterImageView.kf.setImage(with: url)
-        overviewLabel.text = row.overview
         switch type {
-        case .movie:
-            releaseDateLabel.text = row.releaseDate
-            trendTitleLabel.text = row.title
-            originalTitleLabel.text = row.originalTitle
-        case .tv:
-            releaseDateLabel.text = row.firstAirDate
+        case .all:
+            if let genre = genres[row.genreIDS[0]] {
+                genreLabel.text = "#\(genre)"
+            }
+            
+            let url = URL(string: URL.imageURL + row.backdropPath)
+            posterImageView.kf.setImage(with: url)
+            
+            overviewLabel.text = row.overview
+            
+            if row.mediaType == .movie {
+                releaseDateLabel.text = row.releaseDate
+                trendTitleLabel.text = row.title
+                originalTitleLabel.text = row.originalTitle
+            } else if row.mediaType == .tv {
+                releaseDateLabel.text = row.firstAirDate
+                trendTitleLabel.text = row.name
+                originalTitleLabel.text = row.originalName
+            }
+        default:
+//            genreLabel.text = row.knownForDepartment
             trendTitleLabel.text = row.name
             originalTitleLabel.text = row.originalName
-        default:
-            print("기달")
         }
+        
     }
     
     override func configureView() {
