@@ -16,11 +16,10 @@ class TmdbAPIManager {
     
     let parameters: Parameters = ["language": "ko"]
 
-    func callRequest(type: Endpoint, page: Int, completionHandler: @escaping (MovieTrend?) -> Void ) {
+    func callRequest(type: Endpoint, page: Int, completionHandler: @escaping (AllTrend?) -> Void ) {
 
-        guard let url = URL(string: type.requestURL + "&page=\(page)") else { return }
+        guard let url = URL(string: type.requestURL + "&page=\(page)&language=ko" ) else { return }
         let request = URLRequest(url: url, timeoutInterval: 10)
-
         URLSession.shared.dataTask(with: request) { data, response, error in
 
             DispatchQueue.main.async {
@@ -43,7 +42,7 @@ class TmdbAPIManager {
                 }
 
                 do {
-                    let result = try JSONDecoder().decode(MovieTrend.self, from: data)
+                    let result = try JSONDecoder().decode(AllTrend.self, from: data)
                     completionHandler(result)
                     print(result)
                 } catch {
@@ -52,7 +51,7 @@ class TmdbAPIManager {
                 }
             }
 
-        }.resume() //하ㅏㅏㅏㅏㅏㅏ
+        }.resume()
         
 //        let url = type.requestURL + "&page=\(page)"
 //        AF.request(url, method: .get, parameters: parameters).validate(statusCode: 200...500)

@@ -7,6 +7,13 @@
 
 import UIKit
 
+enum MediaType {
+    case all
+    case movie
+    case tv
+    case person
+}
+
 class TrendTableViewCell: BaseTableViewCell {
     
     let releaseDateLabel = {
@@ -93,18 +100,27 @@ class TrendTableViewCell: BaseTableViewCell {
                     10770: "TV Movie", 53: "Thriller", 10752: "War", 37: "Western"
     ]
     
-    func configureCell(row: Result) {
+    func configureCell(row: TrendResult, type: MediaType) {
+        
         if let genre = genres[row.genreIDS[0]] {
             genreLabel.text = "#\(genre)"
         }
-        releaseDateLabel.text = row.releaseDate
-
+        
         let url = URL(string: URL.imageURL + (row.backdropPath ?? ""))
         posterImageView.kf.setImage(with: url)
-        
-        trendTitleLabel.text = row.title
-        originalTitleLabel.text = row.originalTitle
         overviewLabel.text = row.overview
+        switch type {
+        case .movie:
+            releaseDateLabel.text = row.releaseDate
+            trendTitleLabel.text = row.title
+            originalTitleLabel.text = row.originalTitle
+        case .tv:
+            releaseDateLabel.text = row.firstAirDate
+            trendTitleLabel.text = row.name
+            originalTitleLabel.text = row.originalName
+        default:
+            print("기달")
+        }
     }
     
     override func configureView() {
