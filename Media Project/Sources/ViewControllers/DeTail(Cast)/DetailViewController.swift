@@ -42,10 +42,10 @@ class DetailViewController: BaseViewController {
         
         mainView.titleLabel.text = movie.title
         
-        let backdrop = URL(string: URL.imageURL + (movie.backdropPath ?? ""))
+        let backdrop = URL(string: URL.imageURL + (movie.backdropPath))
         mainView.backdropImageView.kf.setImage(with: backdrop)
         
-        let poster = URL(string: URL.imageURL + (movie.posterPath ?? ""))
+        let poster = URL(string: URL.imageURL + (movie.posterPath))
         mainView.posterImageView.kf.setImage(with: poster)
         
         mainView.tableView.delegate = self
