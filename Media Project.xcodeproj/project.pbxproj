@@ -53,6 +53,7 @@
 		23F33F842AFF35B9005DB401 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F33F832AFF35B9005DB401 /* APIKey.swift */; };
 		23F33F862AFF36E3005DB401 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F33F852AFF36E3005DB401 /* TabBarController.swift */; };
 		23F33F892AFF3793005DB401 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F33F882AFF3793005DB401 /* HomeViewController.swift */; };
+		23F33F8B2AFF3ADF005DB401 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F33F8A2AFF3ADF005DB401 /* HomeTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,6 +101,7 @@
 		23F33F832AFF35B9005DB401 /* APIKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		23F33F852AFF36E3005DB401 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		23F33F882AFF3793005DB401 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		23F33F8A2AFF3ADF005DB401 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -291,6 +293,7 @@
 			isa = PBXGroup;
 			children = (
 				23F33F882AFF3793005DB401 /* HomeViewController.swift */,
+				23F33F8A2AFF3ADF005DB401 /* HomeTableViewCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -399,6 +402,7 @@
 				235878B42A86348000861B01 /* TrendViewController.swift in Sources */,
 				23F33F842AFF35B9005DB401 /* APIKey.swift in Sources */,
 				235878D62A873C2500861B01 /* Endpoint.swift in Sources */,
+				23F33F8B2AFF3ADF005DB401 /* HomeTableViewCell.swift in Sources */,
 				23F33F862AFF36E3005DB401 /* TabBarController.swift in Sources */,
 				234BC7042A9E00220062F776 /* ProfileView.swift in Sources */,
 				2356E4A02A90A99A000DB64F /* HeaderMovieCollectionReusableView.swift in Sources */,
