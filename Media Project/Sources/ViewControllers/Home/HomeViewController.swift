@@ -14,9 +14,6 @@ final class HomeViewController: BaseViewController {
         let view = UITableView()
         view.register(HomeTableViewCell.self, forCellReuseIdentifier: HomeTableViewCell.identifier)
         view.register(HomeMainTableViewCell.self, forCellReuseIdentifier: HomeMainTableViewCell.identifier)
-        view.backgroundColor = .cyan
-//        view.estimatedRowHeight = 300
-//        view.rowHeight = UITableView.automaticDimension
         view.separatorStyle = .none
         return view
     }()
@@ -25,7 +22,7 @@ final class HomeViewController: BaseViewController {
         super.viewDidLoad()
         print("====viewDidLoad")
         view.backgroundColor = .white
-        
+        title = "Home"
         tableView.delegate = self
         tableView.dataSource = self
     }
@@ -79,14 +76,14 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case 0: return UITableView.automaticDimension
-        default: return 170
+        default: return 200
         }
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case 0: return 300
-        default: return 170
+        default: return 200
         }
     }
 
