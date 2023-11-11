@@ -47,6 +47,9 @@
 		238AF59B2AA4A99900807E46 /* AllTrendData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238AF59A2AA4A99900807E46 /* AllTrendData.swift */; };
 		23A5C5DC2AA0C7C4002A529B /* TrendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A5C5DB2AA0C7C4002A529B /* TrendView.swift */; };
 		23A5C5DE2AA0C8CA002A529B /* TrendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A5C5DD2AA0C8CA002A529B /* TrendTableViewCell.swift */; };
+		23CACBF52AFF758B008AC1DD /* CastCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CACBF42AFF758B008AC1DD /* CastCollectionViewCell.swift */; };
+		23CACBF72AFF77C2008AC1DD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CACBF62AFF77C2008AC1DD /* ViewController.swift */; };
+		23CACBF92AFF826E008AC1DD /* DetailCastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CACBF82AFF826E008AC1DD /* DetailCastTableViewCell.swift */; };
 		23CB122C2A8B92E80023A9DF /* MovieTrendData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CB122B2A8B92E80023A9DF /* MovieTrendData.swift */; };
 		23EEEF332A9E028700A0A712 /* TextFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EEEF322A9E028700A0A712 /* TextFieldViewController.swift */; };
 		23EEEF352A9E02BD00A0A712 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EEEF342A9E02BD00A0A712 /* ProfileTableViewCell.swift */; };
@@ -98,6 +101,9 @@
 		238AF59A2AA4A99900807E46 /* AllTrendData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTrendData.swift; sourceTree = "<group>"; };
 		23A5C5DB2AA0C7C4002A529B /* TrendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendView.swift; sourceTree = "<group>"; };
 		23A5C5DD2AA0C8CA002A529B /* TrendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendTableViewCell.swift; sourceTree = "<group>"; };
+		23CACBF42AFF758B008AC1DD /* CastCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastCollectionViewCell.swift; sourceTree = "<group>"; };
+		23CACBF62AFF77C2008AC1DD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		23CACBF82AFF826E008AC1DD /* DetailCastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCastTableViewCell.swift; sourceTree = "<group>"; };
 		23CB122B2A8B92E80023A9DF /* MovieTrendData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTrendData.swift; sourceTree = "<group>"; };
 		23EEEF322A9E028700A0A712 /* TextFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldViewController.swift; sourceTree = "<group>"; };
 		23EEEF342A9E02BD00A0A712 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
@@ -183,6 +189,9 @@
 				2356E55D2A9CBA99000DB64F /* DetailCastView.swift */,
 				235878E02A8779E800861B01 /* DetailTableViewCell.swift */,
 				235878E42A877B0700861B01 /* CastTableViewCell.swift */,
+				23CACBF42AFF758B008AC1DD /* CastCollectionViewCell.swift */,
+				23CACBF62AFF77C2008AC1DD /* ViewController.swift */,
+				23CACBF82AFF826E008AC1DD /* DetailCastTableViewCell.swift */,
 			);
 			path = "DeTail(Cast)";
 			sourceTree = "<group>";
@@ -409,6 +418,7 @@
 				23F33F8F2AFF4229005DB401 /* HomeCollectionViewCell.swift in Sources */,
 				2356E5582A9CAB92000DB64F /* BaseTableViewCell.swift in Sources */,
 				23A5C5DE2AA0C8CA002A529B /* TrendTableViewCell.swift in Sources */,
+				23CACBF52AFF758B008AC1DD /* CastCollectionViewCell.swift in Sources */,
 				234B593A2A9E13560030160E /* Extension+Notification.swift in Sources */,
 				23A5C5DC2AA0C7C4002A529B /* TrendView.swift in Sources */,
 				2356E5512A9CA3AB000DB64F /* BaseViewController.swift in Sources */,
@@ -418,6 +428,7 @@
 				238AF59B2AA4A99900807E46 /* AllTrendData.swift in Sources */,
 				2356E4992A909C7C000DB64F /* MovieViewController.swift in Sources */,
 				23F33F8D2AFF3FEE005DB401 /* HomeMainTableViewCell.swift in Sources */,
+				23CACBF72AFF77C2008AC1DD /* ViewController.swift in Sources */,
 				235878B42A86348000861B01 /* TrendViewController.swift in Sources */,
 				23F33F842AFF35B9005DB401 /* APIKey.swift in Sources */,
 				235878D62A873C2500861B01 /* Endpoint.swift in Sources */,
@@ -426,6 +437,7 @@
 				23F33F952AFF53CF005DB401 /* Image+Enum.swift in Sources */,
 				234BC7042A9E00220062F776 /* ProfileView.swift in Sources */,
 				2356E4A02A90A99A000DB64F /* HeaderMovieCollectionReusableView.swift in Sources */,
+				23CACBF92AFF826E008AC1DD /* DetailCastTableViewCell.swift in Sources */,
 				235878DA2A8740F500861B01 /* TmdbAPIManager.swift in Sources */,
 				235878C82A87121C00861B01 /* ReusableViewProtocol.swift in Sources */,
 				23F33F892AFF3793005DB401 /* HomeViewController.swift in Sources */,
