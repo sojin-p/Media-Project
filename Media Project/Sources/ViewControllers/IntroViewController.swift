@@ -10,6 +10,10 @@ import SnapKit
 
 class IntroViewController: UIPageViewController {
     
+    deinit {
+        print("==deinit IntroViewController")
+    }
+    
     override init(transitionStyle style: UIPageViewController.TransitionStyle, navigationOrientation: UIPageViewController.NavigationOrientation, options: [UIPageViewController.OptionsKey : Any]? = nil) {
         super.init(transitionStyle: .scroll, navigationOrientation: .horizontal)
     }
@@ -137,13 +141,13 @@ extension UIViewController {
     @objc func skipAndStartButtonClicked() {
         UserDefaultsHelper.shared.isLaunched = true
         
-        let vc = TrendViewController()
-        let nav = UINavigationController(rootViewController: vc)
+        let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+        let sceneDelegate = windowScene?.delegate as? SceneDelegate
         
-        nav.modalTransitionStyle = .crossDissolve
-        nav.modalPresentationStyle = .fullScreen
+        let vc = TabBarController()
         
-        present(nav, animated: true)
+        sceneDelegate?.window?.rootViewController = vc
+        sceneDelegate?.window?.makeKeyAndVisible()
         
     }
     
