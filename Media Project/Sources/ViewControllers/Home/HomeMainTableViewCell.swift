@@ -11,8 +11,8 @@ final class HomeMainTableViewCell: BaseTableViewCell {
     
     let titleLabel = {
         let view = UILabel()
-        view.textAlignment = .center
-        view.text = "title"
+        view.text = "인기 영화"
+        view.font = .systemFont(ofSize: 16, weight: .bold)
         return view
     }()
     
@@ -29,20 +29,25 @@ final class HomeMainTableViewCell: BaseTableViewCell {
     override func setConstraints() {
         
         titleLabel.snp.makeConstraints { make in
-            make.top.horizontalEdges.equalToSuperview()
+            make.top.equalToSuperview().offset(10)
+            make.horizontalEdges.equalToSuperview().inset(15)
         }
         
         collectionView.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(5)
+            make.top.equalTo(titleLabel.snp.bottom).offset(8)
+            make.horizontalEdges.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-10)
         }
     }
     
     private static func setCollectionViewLayout() -> UICollectionViewFlowLayout {
         
         let layout = UICollectionViewFlowLayout()
+        let spacing: CGFloat = 15
         
         layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: 100, height: 150)
+        layout.itemSize = CGSize(width: 100, height: 160)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: spacing)
         
         return layout
     }
