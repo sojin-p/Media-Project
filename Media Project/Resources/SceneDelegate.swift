@@ -29,10 +29,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let introVC = IntroViewController()
             window?.rootViewController = introVC
         } else {
-            //트루면 trendVC
-            let trendVC = TrendViewController()
-            let nav = UINavigationController(rootViewController: trendVC)
-            window?.rootViewController = nav
+            //트루면 homeVC
+            let vc = TabBarController()
+//            let nav = UINavigationController(rootViewController: trendVC)
+            window?.rootViewController = vc
         }
         window?.makeKeyAndVisible()
         
