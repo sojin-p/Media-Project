@@ -17,6 +17,8 @@ class TextFieldViewController: BaseViewController {
     
     var delegate: PassNicknameDelegate?
     
+    var completionHandler: ((String) -> Void)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -25,7 +27,12 @@ class TextFieldViewController: BaseViewController {
         super.viewDidDisappear(animated)
         
         guard let text = textField.text else { return }
+        
         delegate?.receiveNickname(nickname: text)
+        
+        NotificationCenter.default.post(name: .userName, object: nil, userInfo: ["name": text])
+        
+        completionHandler?(text)
         
     }
     
