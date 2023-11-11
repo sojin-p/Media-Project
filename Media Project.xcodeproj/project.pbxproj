@@ -54,6 +54,8 @@
 		23F33F862AFF36E3005DB401 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F33F852AFF36E3005DB401 /* TabBarController.swift */; };
 		23F33F892AFF3793005DB401 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F33F882AFF3793005DB401 /* HomeViewController.swift */; };
 		23F33F8B2AFF3ADF005DB401 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F33F8A2AFF3ADF005DB401 /* HomeTableViewCell.swift */; };
+		23F33F8D2AFF3FEE005DB401 /* HomeMainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F33F8C2AFF3FEE005DB401 /* HomeMainTableViewCell.swift */; };
+		23F33F8F2AFF4229005DB401 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F33F8E2AFF4229005DB401 /* HomeCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -102,6 +104,8 @@
 		23F33F852AFF36E3005DB401 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		23F33F882AFF3793005DB401 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		23F33F8A2AFF3ADF005DB401 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		23F33F8C2AFF3FEE005DB401 /* HomeMainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMainTableViewCell.swift; sourceTree = "<group>"; };
+		23F33F8E2AFF4229005DB401 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -294,6 +298,8 @@
 			children = (
 				23F33F882AFF3793005DB401 /* HomeViewController.swift */,
 				23F33F8A2AFF3ADF005DB401 /* HomeTableViewCell.swift */,
+				23F33F8C2AFF3FEE005DB401 /* HomeMainTableViewCell.swift */,
+				23F33F8E2AFF4229005DB401 /* HomeCollectionViewCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -389,6 +395,7 @@
 				23EEEF332A9E028700A0A712 /* TextFieldViewController.swift in Sources */,
 				23EEEF352A9E02BD00A0A712 /* ProfileTableViewCell.swift in Sources */,
 				235878D42A873B1B00861B01 /* Movie.swift in Sources */,
+				23F33F8F2AFF4229005DB401 /* HomeCollectionViewCell.swift in Sources */,
 				2356E5582A9CAB92000DB64F /* BaseTableViewCell.swift in Sources */,
 				23A5C5DE2AA0C8CA002A529B /* TrendTableViewCell.swift in Sources */,
 				234B593A2A9E13560030160E /* Extension+Notification.swift in Sources */,
@@ -399,6 +406,7 @@
 				235878E92A87A65600861B01 /* Cast.swift in Sources */,
 				238AF59B2AA4A99900807E46 /* AllTrendData.swift in Sources */,
 				2356E4992A909C7C000DB64F /* MovieViewController.swift in Sources */,
+				23F33F8D2AFF3FEE005DB401 /* HomeMainTableViewCell.swift in Sources */,
 				235878B42A86348000861B01 /* TrendViewController.swift in Sources */,
 				23F33F842AFF35B9005DB401 /* APIKey.swift in Sources */,
 				235878D62A873C2500861B01 /* Endpoint.swift in Sources */,
