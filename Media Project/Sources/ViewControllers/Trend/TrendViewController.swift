@@ -12,7 +12,7 @@ class TrendViewController: BaseViewController {
     let mainView = TrendView()
     var page = 1
     var trendList: AllTrend = AllTrend(page: 0, results: [], totalPages: 0, totalResults: 0)
-    var mediaType: MediaType = .tv
+    var mediaType: MediaType = .all
     
     override func loadView() {
         self.view = mainView
@@ -45,22 +45,22 @@ class TrendViewController: BaseViewController {
     }
     
     func setPopUpButton() {
-        let menuClosure = { (action: UIAction) in
+        let menuClosure = { [weak self] (action: UIAction) in
             print("클릭 \(action.title)")
-            self.trendList.results.removeAll()
+            self?.trendList.results.removeAll()
             
             if action.title == "Movie" {
-                self.mediaType = .movie
-                self.callRequest(page: 1, type: .movie)
+                self?.mediaType = .movie
+                self?.callRequest(page: 1, type: .movie)
             } else if action.title == "TV" {
-                self.mediaType = .tv
-                self.callRequest(page: 1, type: .tv)
+                self?.mediaType = .tv
+                self?.callRequest(page: 1, type: .tv)
             } else if action.title == "All" {
-                self.mediaType = .all
-                self.callRequest(page: 1, type: .all)
+                self?.mediaType = .all
+                self?.callRequest(page: 1, type: .all)
             } else {
-                self.mediaType = .person
-                self.callRequest(page: 1, type: .person)
+                self?.mediaType = .person
+                self?.callRequest(page: 1, type: .person)
             }
         }
         
@@ -100,21 +100,22 @@ extension TrendViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TrendTableViewCell.identifier) as? TrendTableViewCell else { return UITableViewCell() }
         
         let row = trendList.results[indexPath.row]
         
-        switch mediaType{
-        case .person: cell.configureCell(row: row, type: .person)
-        default: cell.configureCell(row: row, type: .all)
-        }
-        
-//        switch mediaType {
-//        case .all: cell.configureCell(row: row, type: .all)
-//        case .movie: cell.configureCell(row: row, type: .movie)
-//        case .tv: cell.configureCell(row: row, type: .tv)
+//        switch mediaType{
 //        case .person: cell.configureCell(row: row, type: .person)
+//        default: cell.configureCell(row: row, type: .all)
 //        }
+        
+        switch mediaType {
+        case .all: cell.configureCell(row: row, type: .all)
+        case .movie: cell.configureCell(row: row, type: .movie)
+        case .tv: cell.configureCell(row: row, type: .tv)
+        case .person: cell.configureCell(row: row, type: .person)
+        }
         return cell
     }
     
@@ -122,9 +123,11 @@ extension TrendViewController: UITableViewDelegate, UITableViewDataSource {
         
         let detailVC = DetailViewController()
         
-        if mediaType == .movie {
-            detailVC.movie = trendList.results[indexPath.row]
-        }
+        detailVC.movie = trendList.results[indexPath.row]
+        
+//        if mediaType == .movie {
+//            detailVC.movie = trendList.results[indexPath.row]
+//        }
         
         navigationController?.pushViewController(detailVC, animated: true)
         
