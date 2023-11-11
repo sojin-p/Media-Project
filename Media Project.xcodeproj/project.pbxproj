@@ -56,6 +56,7 @@
 		23F33F8B2AFF3ADF005DB401 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F33F8A2AFF3ADF005DB401 /* HomeTableViewCell.swift */; };
 		23F33F8D2AFF3FEE005DB401 /* HomeMainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F33F8C2AFF3FEE005DB401 /* HomeMainTableViewCell.swift */; };
 		23F33F8F2AFF4229005DB401 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F33F8E2AFF4229005DB401 /* HomeCollectionViewCell.swift */; };
+		23F33F952AFF53CF005DB401 /* Image+Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F33F942AFF53CF005DB401 /* Image+Enum.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -106,6 +107,7 @@
 		23F33F8A2AFF3ADF005DB401 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		23F33F8C2AFF3FEE005DB401 /* HomeMainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMainTableViewCell.swift; sourceTree = "<group>"; };
 		23F33F8E2AFF4229005DB401 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
+		23F33F942AFF53CF005DB401 /* Image+Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Enum.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -265,8 +267,8 @@
 				235878F02A87B58100861B01 /* Models */,
 				2356E50F2A9A0958000DB64F /* Extension */,
 				2356E5182A9A0F9A000DB64F /* Protocol */,
+				23F33F932AFF536C005DB401 /* Enum */,
 				2356E5592A9CB50A000DB64F /* UserDefaultsHelper.swift */,
-				235878D52A873C2500861B01 /* Endpoint.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -302,6 +304,15 @@
 				23F33F8E2AFF4229005DB401 /* HomeCollectionViewCell.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		23F33F932AFF536C005DB401 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				235878D52A873C2500861B01 /* Endpoint.swift */,
+				23F33F942AFF53CF005DB401 /* Image+Enum.swift */,
+			);
+			path = Enum;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -412,6 +423,7 @@
 				235878D62A873C2500861B01 /* Endpoint.swift in Sources */,
 				23F33F8B2AFF3ADF005DB401 /* HomeTableViewCell.swift in Sources */,
 				23F33F862AFF36E3005DB401 /* TabBarController.swift in Sources */,
+				23F33F952AFF53CF005DB401 /* Image+Enum.swift in Sources */,
 				234BC7042A9E00220062F776 /* ProfileView.swift in Sources */,
 				2356E4A02A90A99A000DB64F /* HeaderMovieCollectionReusableView.swift in Sources */,
 				235878DA2A8740F500861B01 /* TmdbAPIManager.swift in Sources */,
