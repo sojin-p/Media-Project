@@ -39,7 +39,7 @@ final class HomeViewController: BaseViewController {
     
 }
 
-extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
+extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -85,6 +85,11 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
         case 0: return 300
         default: return 200
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = ViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
 
 }
