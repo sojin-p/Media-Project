@@ -9,12 +9,49 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
+enum NetworkError: Int, Error, LocalizedError {
+    case unathorized = 401
+    case permisstionDenied = 403
+    case invalidServer = 500
+    case missingParameter = 400
+    
+    var errorDescription: String {
+        switch self {
+        case .unathorized:
+            return "인증 정보가 없습니다."
+        case .permisstionDenied:
+            return "권한이 없습니다."
+        case .invalidServer:
+            return "서버 점검 중입니다."
+        case .missingParameter:
+            return "검색어를 입력해주세요."
+        }
+    }
+}
+
 class TmdbAPIManager {
     
     static let shared = TmdbAPIManager()
     private init() { }
     
     let parameters: Parameters = ["language": "ko"]
+    
+    func requestConvertible<T: Decodable>(type: T.Type, api: Router, comletion: @escaping (Result<T, NetworkError>) -> () ) {
+        
+        AF.request(api).validate(statusCode: 200...500)
+            .responseDecodable(of: T.self) { response in
+                print("response.response?.statusCode: \(response.response?.statusCode)")
+                switch response.result {
+                case .success(let data): comletion(.success(data))
+                    print("====data", data)
+                case .failure(_):
+                    let statusCode = response.response?.statusCode ?? 500
+                    print("-------", statusCode)
+                    guard let error = NetworkError(rawValue: statusCode) else { return }
+                    comletion(.failure(error))
+                }
+            }
+    }
 
     func callRequest(type: Endpoint, page: Int, completionHandler: @escaping (AllTrend?) -> Void ) {
 
