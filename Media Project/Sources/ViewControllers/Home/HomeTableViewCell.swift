@@ -58,7 +58,7 @@ final class HomeTableViewCell: BaseTableViewCell {
         containerView.snp.makeConstraints { make in
             make.verticalEdges.equalToSuperview().inset(20)
             make.width.equalToSuperview().multipliedBy(0.85)
-            make.height.equalTo(containerView.snp.width).multipliedBy(1.3)
+            make.height.equalTo(containerView.snp.width).multipliedBy(1.4)
             make.centerX.equalToSuperview()
         }
         
