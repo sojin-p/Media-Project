@@ -59,7 +59,6 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: HomeTableViewCell.identifier, for: indexPath) as? HomeTableViewCell else { return UITableViewCell() }
             
             cell.posterImageView.backgroundColor = .systemYellow
-            cell.testLabel.text = "\(indexPath)"
             
             return cell
             
