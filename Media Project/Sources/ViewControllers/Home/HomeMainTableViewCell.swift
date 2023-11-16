@@ -19,6 +19,7 @@ final class HomeMainTableViewCell: BaseTableViewCell {
     let collectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: setCollectionViewLayout())
         view.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: HomeCollectionViewCell.identifier)
+        view.showsHorizontalScrollIndicator = false
         return view
     }()
     
