@@ -18,6 +18,11 @@ final class HomeViewController: BaseViewController {
         return view
     }()
     
+    var trendingData: [PopularResult] = []
+    var popularData: [PopularResult] = []
+    var upcomingData: [PopularResult] = []
+    var nowPlayingData: [PopularResult] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("====viewDidLoad")
@@ -25,6 +30,70 @@ final class HomeViewController: BaseViewController {
         title = "Home"
         tableView.delegate = self
         tableView.dataSource = self
+        
+//        let group = DispatchGroup()
+        callRequest(api: .trending(filter: .movie))
+//        callRequest(api: .popular)
+//        callRequest(api: .upcoming)
+//        callRequest(api: .now_playing)
+        
+    }
+    
+    func callRequest(api: Router) {
+        
+        TmdbAPIManager.shared.requestConvertible(type: PopularData.self, api: api) { [weak self] response in
+            switch response {
+            case .success(let success):
+                switch api {
+                case .trending(_):
+                    self?.trendingData = success.results
+                    dump(self?.trendingData)
+                    
+                case .popular:
+                    self?.popularData = success.results
+                    dump(self?.popularData)
+                    
+                case .upcoming:
+                    self?.upcomingData = success.results
+                    dump(self?.upcomingData)
+                    
+                case .now_playing:
+                    self?.nowPlayingData = success.results
+                    dump(self?.nowPlayingData)
+                default: print("default")
+                }
+            case .failure(let failure):
+                print(failure.errorDescription)
+            }
+        }
+        
+//        TmdbAPIManager.shared.requestConvertible(type: PopularData.self, api: .popular) { [weak self] response in
+//            switch response {
+//            case .success(let success):
+//                self?.popularData = success.results
+//                dump(self?.popularData)
+//            case .failure(let failure):
+//                print(failure.errorDescription)
+//            }
+//        }
+//        
+//        TmdbAPIManager.shared.requestConvertible(type: PopularData.self, api: .upcoming) { [weak self] response in
+//            switch response {
+//            case .success(let success):
+//                self?.upcomingData = success.results
+//            case .failure(let failure):
+//                print(failure.errorDescription)
+//            }
+//        }
+//        
+//        TmdbAPIManager.shared.requestConvertible(type: PopularData.self, api: .now_playing) { [weak self] response in
+//            switch response {
+//            case .success(let success):
+//                self?.nowPlayingData = success.results
+//            case .failure(let failure):
+//                print(failure.errorDescription)
+//            }
+//        }
     }
     
     override func configureView() {
