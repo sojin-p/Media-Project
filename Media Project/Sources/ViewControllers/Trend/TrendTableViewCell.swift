@@ -95,7 +95,7 @@ class TrendTableViewCell: BaseTableViewCell {
                     10766: "Soap", 10767: "Talk", 10768: "War & Politics"
     ]
     
-    func configureCell(row: TrendResult, type: MediaType) {
+    func configureCell(row: AllResult, type: MediaType) {
         
         switch type {
         case .all:

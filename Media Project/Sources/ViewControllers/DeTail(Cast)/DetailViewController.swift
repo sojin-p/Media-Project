@@ -13,7 +13,7 @@ class DetailViewController: BaseViewController {
     
     let sectionTitleList = ["OverView", "Cast"]
     var isExpand: Bool = false
-    var movie: TrendResult?
+    var movie: AllResult?
     var cast: [Cast] = []
     
     override func loadView() {

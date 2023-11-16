@@ -10,7 +10,7 @@ import Foundation
 // MARK: - SearchPhoto
 struct AllTrend: Codable {
     let page: Int
-    var results: [TrendResult]
+    var results: [AllResult]
     let totalPages, totalResults: Int
 
     enum CodingKeys: String, CodingKey {
@@ -21,7 +21,7 @@ struct AllTrend: Codable {
 }
 
 // MARK: - Result
-struct TrendResult: Codable {
+struct AllResult: Codable {
     let adult: Bool
     let backdropPath: String
     let id: Int
