@@ -40,13 +40,10 @@ class TmdbAPIManager {
         
         AF.request(api).validate(statusCode: 200...500)
             .responseDecodable(of: T.self) { response in
-                print("response.response?.statusCode: \(response.response?.statusCode)")
                 switch response.result {
                 case .success(let data): comletion(.success(data))
-                    print("====data", data)
                 case .failure(_):
                     let statusCode = response.response?.statusCode ?? 500
-                    print("-------", statusCode)
                     guard let error = NetworkError(rawValue: statusCode) else { return }
                     comletion(.failure(error))
                 }
