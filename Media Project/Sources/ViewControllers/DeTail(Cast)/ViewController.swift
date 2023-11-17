@@ -57,6 +57,8 @@ final class ViewController: BaseViewController {
         return view
     }()
     
+    var data: PopularResult?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white

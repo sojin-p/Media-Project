@@ -25,6 +25,7 @@ final class HomeMainTableViewCell: BaseTableViewCell {
     }()
     
     var data: [PopularResult] = []
+    weak var delegate: HomeMainTableViewCellDelegate?
     
     func configureCell(data: [PopularResult]) {
         self.data = data
@@ -34,6 +35,7 @@ final class HomeMainTableViewCell: BaseTableViewCell {
     override func configureView() {
         
         collectionView.dataSource = self
+        collectionView.delegate = self
         
         [collectionView, titleLabel].forEach { contentView.addSubview($0) }
     }
@@ -65,7 +67,7 @@ final class HomeMainTableViewCell: BaseTableViewCell {
     }
 }
 
-extension HomeMainTableViewCell: UICollectionViewDataSource {
+extension HomeMainTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10
@@ -81,5 +83,10 @@ extension HomeMainTableViewCell: UICollectionViewDataSource {
         }
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let data = data[indexPath.item]
+        delegate?.didSelectItem(data)
     }
 }

@@ -125,6 +125,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             cell.configureCell(data: homeData[indexPath.row].results)
             cell.titleLabel.text = titleList[indexPath.row]
             
+            cell.delegate = self
+            
             return cell
         }
     }
@@ -144,8 +146,25 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = ViewController()
-        navigationController?.pushViewController(vc, animated: true)
+        
+        if indexPath.section == 0 {
+            let vc = ViewController()
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
 
+}
+
+extension HomeViewController: HomeMainTableViewCellDelegate {
+    
+    func didSelectItem(_ data: PopularResult) {
+        let vc = ViewController()
+        print("====", data)
+        vc.data = data
+        navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+protocol HomeMainTableViewCellDelegate : AnyObject {
+    func didSelectItem(_ data: PopularResult)
 }
