@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import Kingfisher
 
-final class ViewController: BaseViewController {
+final class OverviewViewController: BaseViewController {
     
     private let tableView: UITableView = {
         let view = UITableView()
@@ -35,8 +36,8 @@ final class ViewController: BaseViewController {
     let posterImageView = {
         let view = UIImageView()
         view.contentMode = .scaleAspectFill
-        view.clipsToBounds = true
         view.layer.cornerRadius = 7
+        view.clipsToBounds = true
         view.backgroundColor = .systemYellow
         return view
     }()
@@ -44,16 +45,29 @@ final class ViewController: BaseViewController {
     let titleLabel = {
         let view = UILabel()
         view.textColor = .white
-        view.text = "타이틀입니다타이틀입니다타이틀입니다타이틀입니다타이틀입니다타이틀입니다"
+        view.text = "타이틀입니다"
         view.font = .systemFont(ofSize: 20, weight: .semibold)
         view.numberOfLines = 0
         return view
     }()
     
+    let originTitleLabel = {
+        let view = UILabel()
+        view.textColor = .white
+        view.text = "원제 : 어쩌구저쩌구"
+        view.font = .systemFont(ofSize: 16, weight: .regular)
+        view.numberOfLines = 0
+        return view
+    }()
+    
     let playButton = {
-        let view = UIButton()
-        view.setImage(UIImage(systemName: "star.fill"), for: .normal)
+        let view = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        view.setImage(UIImage(systemName: "arrowtriangle.right.fill"), for: .normal)
         view.backgroundColor = .white
+        view.tintColor = .black
+        DispatchQueue.main.async {
+            view.layer.cornerRadius = view.frame.width / 2
+        }
         return view
     }()
     
@@ -64,12 +78,28 @@ final class ViewController: BaseViewController {
         view.backgroundColor = .white
         tableView.delegate = self
         tableView.dataSource = self
+        
+        setTableHeaderView()
+    }
+    
+    func setTableHeaderView() {
+        guard let data else { return }
+        
+        let backdropUrl = URL(string: URL.imageURL + (data.backdropPath ?? ""))
+        backdropImageView.kf.setImage(with: backdropUrl)
+        
+        let posterUrl = URL(string: URL.imageURL + (data.posterPath ?? ""))
+        posterImageView.kf.setImage(with: posterUrl)
+        
+        titleLabel.text = data.title
+        originTitleLabel.text = data.originalTitle
+        
     }
     
     override func configureView() {
         view.addSubview(tableView)
         tableView.tableHeaderView = backdropImageView
-        [posterImageView, alphaView, titleLabel, playButton].forEach { backdropImageView.addSubview($0) }
+        [alphaView, posterImageView, originTitleLabel, titleLabel, playButton].forEach { backdropImageView.addSubview($0) }
     }
     
     override func setConstraints() {
@@ -95,22 +125,27 @@ final class ViewController: BaseViewController {
             make.height.equalTo(posterImageView.snp.width).multipliedBy(1.3)
         }
         
-        titleLabel.snp.makeConstraints { make in
+        originTitleLabel.snp.makeConstraints { make in
             make.bottom.equalTo(posterImageView)
             make.leading.equalTo(posterImageView.snp.trailing).offset(15)
             make.trailing.equalTo(playButton.snp.leading).offset(-15)
         }
         
+        titleLabel.snp.makeConstraints { make in
+            make.bottom.equalTo(originTitleLabel.snp.top).offset(-4)
+            make.leading.trailing.equalTo(originTitleLabel)
+        }
+        
         playButton.snp.makeConstraints { make in
             make.size.equalTo(50)
             make.trailing.equalTo(backdropImageView).offset(-20)
-            make.centerY.equalTo(titleLabel)
+            make.bottom.equalTo(originTitleLabel.snp.bottom)
         }
     }
     
 }
 
-extension ViewController: UITableViewDelegate, UITableViewDataSource {
+extension OverviewViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -129,7 +164,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         case 0:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailTableViewCell.identifier, for: indexPath) as? DetailTableViewCell else { return UITableViewCell() }
             
-            cell.overviewLabel.text = "Make a symbolic breakpoint at UIViewAlertForUnsatisfiableConstraints to catch this in the debugger The methods in the UIConstraintBasedLayoutDebugging category on UIView listed in <UIKitCore/UIView.h> may also be helpful."
+            if let data = self.data {
+                cell.overviewLabel.text = data.overview
+            }
             
             return cell
             
@@ -151,7 +188,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension OverviewViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10
