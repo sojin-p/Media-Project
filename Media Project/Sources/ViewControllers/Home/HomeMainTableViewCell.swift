@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class HomeMainTableViewCell: BaseTableViewCell {
     
@@ -23,7 +24,17 @@ final class HomeMainTableViewCell: BaseTableViewCell {
         return view
     }()
     
+    var data: [PopularResult] = []
+    
+    func configureCell(data: [PopularResult]) {
+        self.data = data
+        collectionView.reloadData()
+    }
+    
     override func configureView() {
+        
+        collectionView.dataSource = self
+        
         [collectionView, titleLabel].forEach { contentView.addSubview($0) }
     }
     
@@ -51,5 +62,24 @@ final class HomeMainTableViewCell: BaseTableViewCell {
         layout.sectionInset = UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: spacing)
         
         return layout
+    }
+}
+
+extension HomeMainTableViewCell: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionViewCell.identifier, for: indexPath) as? HomeCollectionViewCell else { return UICollectionViewCell() }
+        
+        if indexPath.item < data.count {
+            let item = data[indexPath.item]
+            let url = URL(string: URL.imageURL + (item.posterPath ?? ""))
+            cell.posterImageView.kf.setImage(with: url)
+        }
+        
+        return cell
     }
 }

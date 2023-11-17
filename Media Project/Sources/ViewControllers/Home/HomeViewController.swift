@@ -18,10 +18,16 @@ final class HomeViewController: BaseViewController {
         return view
     }()
     
-    var trendingData: [PopularResult] = []
-    var popularData: [PopularResult] = []
-    var upcomingData: [PopularResult] = []
-    var nowPlayingData: [PopularResult] = []
+    var homeData: [PopularData] = [
+        PopularData(page: 0, results: [], totalPages: 0, totalResults: 0),
+        PopularData(page: 0, results: [], totalPages: 0, totalResults: 0),
+        PopularData(page: 0, results: [], totalPages: 0, totalResults: 0),
+        PopularData(page: 0, results: [], totalPages: 0, totalResults: 0)
+    ]
+    
+    let randomInt = Int.random(in: 0...19)
+    
+    let group = DispatchGroup()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,38 +36,40 @@ final class HomeViewController: BaseViewController {
         title = "Home"
         tableView.delegate = self
         tableView.dataSource = self
-        
-//        let group = DispatchGroup()
+
         callRequest(api: .trending(filter: .movie))
-//        callRequest(api: .popular)
-//        callRequest(api: .upcoming)
-//        callRequest(api: .now_playing)
+        callRequest(api: .popular)
+        callRequest(api: .upcoming)
+        callRequest(api: .now_playing)
+        
+        group.notify(queue: .main) {
+            self.tableView.reloadData()
+        }
         
     }
     
     func callRequest(api: Router) {
-        
+        group.enter()
         TmdbAPIManager.shared.requestConvertible(type: PopularData.self, api: api) { [weak self] response in
             switch response {
             case .success(let success):
                 switch api {
                 case .trending(_):
-                    self?.trendingData = success.results
-                    dump(self?.trendingData)
+                    self?.homeData[1].results.append(contentsOf: success.results)
                     
                 case .popular:
-                    self?.popularData = success.results
-                    dump(self?.popularData)
+                    self?.homeData[0].results.append(contentsOf: success.results)
                     
                 case .upcoming:
-                    self?.upcomingData = success.results
-                    dump(self?.upcomingData)
+                    self?.homeData[3].results.append(contentsOf: success.results)
                     
                 case .now_playing:
-                    self?.nowPlayingData = success.results
-                    dump(self?.nowPlayingData)
+                    self?.homeData[2].results.append(contentsOf: success.results)
+                    
                 default: print("default")
                 }
+                self?.group.leave()
+                
             case .failure(let failure):
                 print(failure.errorDescription)
             }
@@ -89,7 +97,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0: return 1
-        default: return 5
+        default: return 4
         }
     }
     
@@ -99,13 +107,23 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         case 0:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: HomeTableViewCell.identifier, for: indexPath) as? HomeTableViewCell else { return UITableViewCell() }
             
-            cell.posterImageView.backgroundColor = .systemYellow
+            if indexPath.row < homeData[3].results.count {
+                let randomMovie = homeData[3].results[randomInt].posterPath ?? ""
+                let url = URL(string: URL.imageURL + randomMovie)
+                cell.posterImageView.kf.setImage(with: url)
+            }
+            cell.selectionStyle = .none
             
             return cell
             
         default:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: HomeMainTableViewCell.identifier, for: indexPath) as? HomeMainTableViewCell else { return UITableViewCell() }
             
+            let titleList = ["인기 영화", "주목할 영화", "현재 상영중", "곧 개봉할 영화"]
+            
+            cell.selectionStyle = .none
+            cell.configureCell(data: homeData[indexPath.row].results)
+            cell.titleLabel.text = titleList[indexPath.row]
             
             return cell
         }
