@@ -35,7 +35,7 @@ final class HomeMainTableViewCell: BaseTableViewCell {
         }
         
         collectionView.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(8)
+            make.top.equalTo(titleLabel.snp.bottom).offset(4)
             make.horizontalEdges.equalToSuperview()
             make.bottom.equalToSuperview().offset(-10)
         }
