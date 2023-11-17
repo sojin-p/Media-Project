@@ -66,34 +66,6 @@ final class HomeViewController: BaseViewController {
                 print(failure.errorDescription)
             }
         }
-        
-//        TmdbAPIManager.shared.requestConvertible(type: PopularData.self, api: .popular) { [weak self] response in
-//            switch response {
-//            case .success(let success):
-//                self?.popularData = success.results
-//                dump(self?.popularData)
-//            case .failure(let failure):
-//                print(failure.errorDescription)
-//            }
-//        }
-//        
-//        TmdbAPIManager.shared.requestConvertible(type: PopularData.self, api: .upcoming) { [weak self] response in
-//            switch response {
-//            case .success(let success):
-//                self?.upcomingData = success.results
-//            case .failure(let failure):
-//                print(failure.errorDescription)
-//            }
-//        }
-//        
-//        TmdbAPIManager.shared.requestConvertible(type: PopularData.self, api: .now_playing) { [weak self] response in
-//            switch response {
-//            case .success(let success):
-//                self?.nowPlayingData = success.results
-//            case .failure(let failure):
-//                print(failure.errorDescription)
-//            }
-//        }
     }
     
     override func configureView() {
