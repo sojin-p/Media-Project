@@ -9,7 +9,7 @@ import Foundation
 
 struct PopularData: Decodable {
     let page: Int
-    let results: [PopularResult]
+    var results: [PopularResult]
     let totalPages, totalResults: Int
     
     enum CodingKeys: String, CodingKey {
