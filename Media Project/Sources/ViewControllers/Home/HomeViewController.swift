@@ -114,7 +114,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case 0: return UITableView.automaticDimension
-        default: return 200
+        default: return 220
         }
     }
     
