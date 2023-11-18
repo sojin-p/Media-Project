@@ -149,6 +149,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         
         if indexPath.section == 0 {
             let vc = ViewController()
+            vc.data = homeData[3].results[randomInt]
             navigationController?.pushViewController(vc, animated: true)
         }
     }
