@@ -45,7 +45,7 @@ final class HomeTableViewCell: BaseTableViewCell {
     
     let playButton = {
         let view = UIButton(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
-        view.setImage(UIImage(systemName: "arrowtriangle.right.fill"), for: .normal)
+        view.setImage(UIImage(systemName: "play.fill"), for: .normal)
         view.backgroundColor = .white
         view.tintColor = .black
         DispatchQueue.main.async {
