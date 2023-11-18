@@ -148,7 +148,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if indexPath.section == 0 {
-            let vc = ViewController()
+            let vc = OverviewViewController()
             vc.data = homeData[3].results[randomInt]
             navigationController?.pushViewController(vc, animated: true)
         }
@@ -159,8 +159,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 extension HomeViewController: HomeMainTableViewCellDelegate {
     
     func didSelectItem(_ data: PopularResult) {
-        let vc = ViewController()
-        print("====", data)
+        let vc = OverviewViewController()
         vc.data = data
         navigationController?.pushViewController(vc, animated: true)
     }
