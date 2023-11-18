@@ -176,8 +176,6 @@ extension OverviewViewController: UITableViewDelegate, UITableViewDataSource {
         default:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailCastTableViewCell.identifier, for: indexPath) as? DetailCastTableViewCell else { return UITableViewCell() }
             
-            cell.collectionView.delegate = self
-            cell.collectionView.dataSource = self
             
             return cell
         }
@@ -189,16 +187,6 @@ extension OverviewViewController: UITableViewDelegate, UITableViewDataSource {
         default: return 120
         }
     }
-}
-
-extension OverviewViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CastCollectionViewCell.identifier, for: indexPath) as? CastCollectionViewCell else { return UICollectionViewCell() }
-        return cell
     }
 }
