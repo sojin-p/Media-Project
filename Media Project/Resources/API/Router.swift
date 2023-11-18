@@ -45,8 +45,14 @@ enum Router: URLRequestConvertible {
         case .trending(let filter):
             return "trending/\(filter.string)/day"
             
-        case .credits(let id), .similar(let id), .videos(let id):
-            return "movie/\(id)/\(string)"
+        case .credits(let id):
+            return "movie/\(id)/credits"
+            
+        case .similar(let id):
+            return "movie/\(id)/similar"
+            
+        case .videos(let id):
+            return "movie/\(id)/videos"
             
         case .popular, .upcoming, .now_playing:
             return "movie/\(string)"
