@@ -26,12 +26,12 @@ class DetailViewController: BaseViewController {
         
     }
     
-    func callRequest(id: Int) {
-        TmdbAPIManager.shared.callCreditRequest(id: id) { cast in
-            self.cast = cast
-            self.mainView.tableView.reloadData()
-        }
-    }
+//    func callRequest(id: Int) {
+//        TmdbAPIManager.shared.callCreditRequest(id: id) { cast in
+//            self.cast = cast
+//            self.mainView.tableView.reloadData()
+//        }
+//    }
     
     override func configureView() {
         super.configureView()
@@ -51,7 +51,7 @@ class DetailViewController: BaseViewController {
         mainView.tableView.delegate = self
         mainView.tableView.dataSource = self
         
-        callRequest(id: movie.id)
+//        callRequest(id: movie.id)
     }
     
 }
@@ -98,10 +98,10 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
             guard let castCell = tableView.dequeueReusableCell(withIdentifier: CastTableViewCell.identifier) as? CastTableViewCell else { return UITableViewCell() }
             
             DispatchQueue.main.async {
-                castCell.castTitleLabel.text = self.cast[indexPath.row].castTitle
+//                castCell.castTitleLabel.text = self.cast[indexPath.row].castTitle
                 
-                let profile = URL(string: self.cast[indexPath.row].profileURLString)
-                castCell.castImageView.kf.setImage(with: profile)
+//                let profile = URL(string: self.cast[indexPath.row].profileURLString)
+//                castCell.castImageView.kf.setImage(with: profile)
                 castCell.castImageView.contentMode = .scaleAspectFill
             }
             
