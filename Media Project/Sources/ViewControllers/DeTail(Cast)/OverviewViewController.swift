@@ -208,5 +208,10 @@ extension OverviewViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch indexPath.section {
+        case 0: return 120
+        default: return 120
+        }
     }
 }
