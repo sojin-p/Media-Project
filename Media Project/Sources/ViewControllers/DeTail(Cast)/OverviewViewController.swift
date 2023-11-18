@@ -193,6 +193,9 @@ extension OverviewViewController: UITableViewDelegate, UITableViewDataSource {
         default:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailCastTableViewCell.identifier, for: indexPath) as? DetailCastTableViewCell else { return UITableViewCell() }
             
+            if !cast.isEmpty {
+                cell.configureCell(cast: cast)
+            }
             
             return cell
         }
