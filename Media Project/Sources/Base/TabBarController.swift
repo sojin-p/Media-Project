@@ -12,7 +12,7 @@ final class TabBarController: UITabBarController {
     private let homeVC = {
         let vc = HomeViewController()
         let nav = UINavigationController(rootViewController: vc)
-        vc.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "star"), tag: 0)
+        vc.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house.fill"), tag: 0)
         return nav
     }()
 
@@ -26,7 +26,7 @@ final class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tabBar.tintColor = .black
+        tabBar.tintColor = .label
         tabBar.unselectedItemTintColor = .lightGray
         setViewControllers([homeVC, trendVC], animated: true)
 
