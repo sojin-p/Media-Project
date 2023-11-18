@@ -72,6 +72,7 @@ final class OverviewViewController: BaseViewController {
     }()
     
     var data: PopularResult?
+    var cast: [Cast] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,6 +81,22 @@ final class OverviewViewController: BaseViewController {
         tableView.dataSource = self
         
         setTableHeaderView()
+        callCast()
+    }
+    
+    func callCast() {
+
+        guard let data else { return }
+        
+        TmdbAPIManager.shared.requestConvertible(type: CastData.self, api: .credits(id: data.id)) { [weak self] response in
+            switch response {
+            case .success(let success):
+                self?.cast.append(contentsOf: success.cast)
+                self?.tableView.reloadData()
+            case .failure(let failure):
+                print(failure.errorDescription)
+            }
+        }
     }
     
     func setTableHeaderView() {
