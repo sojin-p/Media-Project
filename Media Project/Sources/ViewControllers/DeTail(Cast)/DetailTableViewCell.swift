@@ -43,7 +43,7 @@ class DetailTableViewCell: BaseTableViewCell {
     override func setConstraints() {
         
         OverviewTitleLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview()
+            make.top.equalToSuperview().offset(20)
             make.leading.equalTo(contentView).inset(20)
         }
         
@@ -62,7 +62,7 @@ class DetailTableViewCell: BaseTableViewCell {
         CastTitleLabel.snp.makeConstraints { make in
             make.top.equalTo(overviewLabel.snp.bottom).offset(30)
             make.leading.equalTo(OverviewTitleLabel)
-            make.bottom.equalTo(contentView).offset(-15)
+            make.bottom.equalTo(contentView).offset(-10)
         }
     }
     
