@@ -62,7 +62,7 @@ final class OverviewViewController: BaseViewController {
     
     let playButton = {
         let view = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-        view.setImage(UIImage(systemName: "arrowtriangle.right.fill"), for: .normal)
+        view.setImage(UIImage(systemName: "play.fill"), for: .normal)
         view.backgroundColor = .white
         view.tintColor = .black
         DispatchQueue.main.async {
@@ -103,8 +103,9 @@ final class OverviewViewController: BaseViewController {
     }
     
     override func setConstraints() {
+        
         tableView.snp.makeConstraints { make in
-            make.top.equalToSuperview()
+            make.top.equalToSuperview().offset(-100)
             make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
         }
         
@@ -122,7 +123,7 @@ final class OverviewViewController: BaseViewController {
         posterImageView.snp.makeConstraints { make in
             make.leading.bottom.equalToSuperview().inset(20)
             make.width.equalTo(backdropImageView).multipliedBy(0.25)
-            make.height.equalTo(posterImageView.snp.width).multipliedBy(1.3)
+            make.height.equalTo(posterImageView.snp.width).multipliedBy(1.4)
         }
         
         originTitleLabel.snp.makeConstraints { make in
@@ -167,6 +168,8 @@ extension OverviewViewController: UITableViewDelegate, UITableViewDataSource {
             if let data = self.data {
                 cell.overviewLabel.text = data.overview
             }
+            
+            cell.selectionStyle = .none
             
             return cell
             
