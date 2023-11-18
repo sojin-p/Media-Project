@@ -12,6 +12,7 @@ final class DetailCastTableViewCell: BaseTableViewCell {
     let collectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: setCollectionViewLayout())
         view.register(CastCollectionViewCell.self, forCellWithReuseIdentifier: CastCollectionViewCell.identifier)
+        view.showsHorizontalScrollIndicator = false
         return view
     }()
     
