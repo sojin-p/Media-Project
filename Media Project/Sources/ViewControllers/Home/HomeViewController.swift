@@ -61,7 +61,10 @@ final class HomeViewController: BaseViewController {
     
     let playButton = {
         let view = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-        view.setImage(UIImage(systemName: "play.fill"), for: .normal)
+        if let originalImage = UIImage(systemName: "play.fill") {
+            let scaledImage = originalImage.withConfiguration(UIImage.SymbolConfiguration(pointSize: 25, weight: .light))
+            view.setImage(scaledImage, for: .normal)
+        }
         view.backgroundColor = .white
         view.tintColor = .black
         DispatchQueue.main.async {
@@ -85,7 +88,7 @@ final class HomeViewController: BaseViewController {
         super.viewDidLoad()
         print("====viewDidLoad")
         view.backgroundColor = .white
-        title = "Home"
+//        title = "Home"
         tableView.delegate = self
         tableView.dataSource = self
 
@@ -180,7 +183,7 @@ final class HomeViewController: BaseViewController {
         }
         
         posterShadowView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(120)
+            make.top.equalToSuperview().offset(90)
             make.horizontalEdges.equalToSuperview().inset(25)
             make.bottom.equalToSuperview().offset(-30)
         }
