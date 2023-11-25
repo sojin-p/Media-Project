@@ -22,4 +22,11 @@ class BaseViewController: UIViewController {
     
     func setConstraints() { }
 
+    func showAlert(title: String, massage: String?) {
+        let alert = UIAlertController(title: title, message: massage, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "확인", style: .default)
+        alert.addAction(ok)
+        present(alert, animated: true)
+    }
+    
 }
