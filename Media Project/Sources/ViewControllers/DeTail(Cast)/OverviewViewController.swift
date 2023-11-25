@@ -22,7 +22,7 @@ final class OverviewViewController: BaseViewController {
     let backdropImageView = {
         let view = UIImageView()
         view.contentMode = .scaleAspectFill
-        view.backgroundColor = .brown
+        view.backgroundColor = .lightGray
         view.clipsToBounds = true
         return view
     }()
