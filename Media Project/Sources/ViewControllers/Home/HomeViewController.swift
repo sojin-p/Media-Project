@@ -88,7 +88,6 @@ final class HomeViewController: BaseViewController {
         super.viewDidLoad()
         print("====viewDidLoad")
         view.backgroundColor = .white
-//        title = "Home"
         tableView.delegate = self
         tableView.dataSource = self
 
@@ -108,7 +107,27 @@ final class HomeViewController: BaseViewController {
     }
     
     @objc func playButtonClicked() {
-        print("===버튼 클릭")
+        
+        let id = homeData[3].results[randomInt].id
+        
+        TmdbAPIManager.shared.requestConvertible(type: MovieVideoData.self, api: .videos(id: id)) { [weak self] response in
+            switch response {
+            case .success(let success):
+                
+                if !success.results.isEmpty {
+                    
+                    let vc = WebViewController()
+                    vc.movieKey = success.results.first?.key ?? ""
+                    self?.navigationController?.pushViewController(vc, animated: true)
+                    
+                } else {
+                    self?.showAlert(title: "재생 가능한 영상이 없습니다.", massage: nil)
+                }
+                
+            case .failure(let failure):
+                print(failure.errorDescription)
+            }
+        }
     }
     
     @objc func posterImageViewClicked() {
