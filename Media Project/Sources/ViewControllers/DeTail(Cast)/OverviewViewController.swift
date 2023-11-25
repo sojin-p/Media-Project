@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
-final class OverviewViewController: BaseViewController {
+final class OverviewViewController: BaseViewController, UIGestureRecognizerDelegate {
     
     private let tableView: UITableView = {
         let view = UITableView()
@@ -62,7 +62,11 @@ final class OverviewViewController: BaseViewController {
     
     let playButton = {
         let view = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-        view.setImage(UIImage(systemName: "play.fill"), for: .normal)
+//        view.setImage(UIImage(systemName: "play.fill"), for: .normal)
+        if let originalImage = UIImage(systemName: "play.fill") {
+            let scaledImage = originalImage.withConfiguration(UIImage.SymbolConfiguration(pointSize: 20, weight: .light))
+            view.setImage(scaledImage, for: .normal)
+        }
         view.backgroundColor = .white
         view.tintColor = .black
         DispatchQueue.main.async {
@@ -82,6 +86,19 @@ final class OverviewViewController: BaseViewController {
         
         setTableHeaderView()
         callCast()
+        setBackBarButton()
+    }
+    
+    func setBackBarButton() {
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
+        
+        let backButton = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .plain, target: self, action: #selector(backBarbuttonClicked))
+        backButton.tintColor = .white
+        navigationItem.leftBarButtonItem =  backButton
+    }
+    
+    @objc func backBarbuttonClicked() {
+        navigationController?.popViewController(animated: true)
     }
     
     func callCast() {
