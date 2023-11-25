@@ -62,7 +62,6 @@ final class OverviewViewController: BaseViewController, UIGestureRecognizerDeleg
     
     let playButton = {
         let view = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-//        view.setImage(UIImage(systemName: "play.fill"), for: .normal)
         if let originalImage = UIImage(systemName: "play.fill") {
             let scaledImage = originalImage.withConfiguration(UIImage.SymbolConfiguration(pointSize: 20, weight: .light))
             view.setImage(scaledImage, for: .normal)
