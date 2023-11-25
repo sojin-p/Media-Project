@@ -18,6 +18,58 @@ final class HomeViewController: BaseViewController {
         return view
     }()
     
+    let containerView = {
+        let view = UIView()
+        return view
+    }()
+    
+    let backImageView = {
+        let view = UIImageView()
+        return view
+    }()
+    
+    let blurImageView = {
+        let view = UIVisualEffectView()
+        view.effect = UIBlurEffect(style: .light)
+        return view
+    }()
+    
+    let posterImageView = {
+        let view = UIImageView()
+        view.layer.cornerRadius = 20
+        view.clipsToBounds = true
+        view.isUserInteractionEnabled = true
+        return view
+    }()
+    
+    let posterShadowView = {
+        let view = UIView()
+        view.layer.cornerRadius = 20
+        view.layer.shadowColor = UIColor.lightGray.cgColor
+        view.layer.shadowOffset = CGSize(width: 4, height: 4) //햇빛 방향
+        view.layer.shadowRadius = 4 //퍼짐의 정도
+        view.layer.shadowOpacity = 0.3 //0~1 사이에서 투명도 조절
+        view.clipsToBounds = false
+        return view
+    }()
+    
+    let gradationView = {
+        let view = UIImageView()
+        view.image = Image.posterBackground
+        return view
+    }()
+    
+    let playButton = {
+        let view = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        view.setImage(UIImage(systemName: "play.fill"), for: .normal)
+        view.backgroundColor = .white
+        view.tintColor = .black
+        DispatchQueue.main.async {
+            view.layer.cornerRadius = view.frame.width / 2
+        }
+        return view
+    }()
+    
     var homeData: [PopularData] = [
         PopularData(page: 0, results: [], totalPages: 0, totalResults: 0),
         PopularData(page: 0, results: [], totalPages: 0, totalResults: 0),
@@ -46,6 +98,27 @@ final class HomeViewController: BaseViewController {
             self.tableView.reloadData()
         }
         
+        posterImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(posterImageViewClicked)))
+        
+        playButton.addTarget(self, action: #selector(playButtonClicked), for: .touchUpInside)
+        
+    }
+    
+    @objc func playButtonClicked() {
+        print("===버튼 클릭")
+    }
+    
+    @objc func posterImageViewClicked() {
+        let vc = OverviewViewController()
+        vc.data = homeData[3].results[randomInt]
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func setHeaderPoster() {
+        let randomMovie = homeData[3].results[randomInt].posterPath ?? ""
+        let url = URL(string: URL.imageURL + randomMovie)
+        posterImageView.kf.setImage(with: url)
+        backImageView.kf.setImage(with: url)
     }
     
     func callRequest(api: Router) {
@@ -62,7 +135,7 @@ final class HomeViewController: BaseViewController {
                     
                 case .upcoming:
                     self?.homeData[3].results.append(contentsOf: success.results)
-                    
+                    self?.setHeaderPoster()
                 case .now_playing:
                     self?.homeData[2].results.append(contentsOf: success.results)
                     
@@ -78,80 +151,89 @@ final class HomeViewController: BaseViewController {
     
     override func configureView() {
         view.addSubview(tableView)
+        tableView.tableHeaderView = containerView
+        [backImageView, blurImageView, gradationView, posterShadowView, posterImageView].forEach { containerView.addSubview($0) }
+        [playButton].forEach { posterImageView.addSubview($0) }
     }
     
     override func setConstraints() {
         tableView.snp.makeConstraints { make in
-            make.edges.equalTo(view.safeAreaLayoutGuide)
+            make.top.equalToSuperview().offset(-100)
+            make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
         }
+        
+        containerView.snp.makeConstraints { make in
+            make.width.equalTo(view.frame.width)
+            make.height.equalTo(650)
+        }
+        
+        backImageView.snp.makeConstraints { make in
+            make.edges.equalTo(containerView)
+        }
+        
+        blurImageView.snp.makeConstraints { make in
+            make.edges.equalTo(containerView)
+        }
+        
+        gradationView.snp.makeConstraints { make in
+            make.edges.equalTo(blurImageView)
+        }
+        
+        posterShadowView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(120)
+            make.horizontalEdges.equalToSuperview().inset(25)
+            make.bottom.equalToSuperview().offset(-30)
+        }
+        
+        posterImageView.snp.makeConstraints { make in
+            make.edges.equalTo(posterShadowView)
+        }
+        
+        playButton.snp.makeConstraints { make in
+            make.size.equalTo(60)
+            make.trailing.equalToSuperview().offset(-20)
+            make.bottom.equalToSuperview().offset(-20)
+        }
+        
     }
     
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0: return 1
-        default: return 4
-        }
+        return 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        switch indexPath.section {
-        case 0:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: HomeTableViewCell.identifier, for: indexPath) as? HomeTableViewCell else { return UITableViewCell() }
-            
-            if indexPath.row < homeData[3].results.count {
-                let randomMovie = homeData[3].results[randomInt].posterPath ?? ""
-                let url = URL(string: URL.imageURL + randomMovie)
-                cell.posterImageView.kf.setImage(with: url)
-            }
-            cell.selectionStyle = .none
-            
-            return cell
-            
-        default:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: HomeMainTableViewCell.identifier, for: indexPath) as? HomeMainTableViewCell else { return UITableViewCell() }
-            
-            let titleList = ["인기 영화", "주목할 영화", "현재 상영중", "곧 개봉할 영화"]
-            
-            cell.selectionStyle = .none
-            cell.configureCell(data: homeData[indexPath.row].results)
-            cell.titleLabel.text = titleList[indexPath.row]
-            
-            cell.delegate = self
-            
-            return cell
-        }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: HomeMainTableViewCell.identifier, for: indexPath) as? HomeMainTableViewCell else { return UITableViewCell() }
+        
+        let titleList = ["인기 영화", "주목할 영화", "현재 상영중", "곧 개봉할 영화"]
+        
+        cell.selectionStyle = .none
+        cell.configureCell(data: homeData[indexPath.row].results)
+        cell.titleLabel.text = titleList[indexPath.row]
+        
+        cell.delegate = self
+        
+        return cell
+
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch indexPath.section {
-        case 0: return UITableView.automaticDimension
-        default: return 220
-        }
+        return 220
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch indexPath.section {
-        case 0: return 300
-        default: return 200
-        }
+        return 220
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if indexPath.section == 0 {
-            let vc = OverviewViewController()
-            vc.data = homeData[3].results[randomInt]
-            navigationController?.pushViewController(vc, animated: true)
-        }
+        let vc = OverviewViewController()
+        vc.data = homeData[3].results[randomInt]
+        navigationController?.pushViewController(vc, animated: true)
     }
 
 }
