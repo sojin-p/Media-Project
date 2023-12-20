@@ -1,8 +1,7 @@
 <img src="https://github.com/sojin-p/GoorumMode/assets/140357450/42691454-9458-495c-a128-7d0876513eb9" width="150" height="150"/>  
 
 # MOVIE UP - 영화 리스트
-<Br>
-스크린샷
+![iPhone Screenshot](https://github.com/sojin-p/MovieUp/assets/140357450/f3a16d79-2941-455d-8eae-c73ef12bfa39)  
 
 <Br>
 
@@ -27,7 +26,7 @@
 | Kind         | Stack                                        |
 | ------------ | -------------------------------------------- |
 | 아키텍쳐     | `MVC`                                          |
-| 프레임워크   | `Foundation` `UIKit`                            |
+| 프레임워크   | `Foundation` `UIKit` `WebKit`                   |
 | 라이브러리   | `SnapKit` `Alamofire` `Kingfisher` `SwiftyJSON` |
 | 의존성관리   | `Swift Package Manager`                         |
 | ETC.         | `CodeBasedUI` `Storyboard`                   |  
@@ -53,19 +52,39 @@
 <Br>
 
 ## 트러블 슈팅
-- Router 패턴으로 변경 후 서버 통신이 되지 않는 이슈
-   - **원인** : ?가 %3F로 바뀌어서 발생 
+1. Router 패턴으로 변경 후 서버 통신이 되지 않는 이슈
+   - **원인** : 쿼리 스트링 `?` 문자가 `%3F`로 인코딩 되어 발생
    - **해결** : 인증 키를 query 연산 프로퍼티로 이동하여 해결
 ```swift
-//-----
+private var path: String {
+        switch self {
+        case .trending(let filter):
+            //return "trending/\(filter.string)/day?=api_key\(APIKey.tmdbKey)"
+            return "trending/\(filter.string)/day" //변경 후
+```
+```swift
+private var query: [String: String] {
+        return [
+            "api_key": APIKey.tmdbKey,
+            "language": "ko"
+        ]
+    }
+```
+<Br>
+
+2. TableView HeaderView 안에 있는 버튼과 이미지가 클릭되지 않는 이슈
+   - **원인** : HeaderView를 UIImageView로 설정하여 발생
+   - **해결** : UIView로 변경하여 해결  
+   
+```swift
+let headerView = {
+        //let view = UIImageView()
+        let view = UIView() //변경 후
+        return view
+    }()
 ```
 
-- TableView HeaderView 안에 있는 버튼과 이미지가 클릭되지 않는 이슈
-   - **원인** : HeaderView를 UIImageView로 설정하여 발생
-   - **해결** : UIView 변경하여 해결
-```swift
-//-----
-```
+<Br>
 
 ## 회고
 
