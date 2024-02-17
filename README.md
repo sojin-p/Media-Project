@@ -1,6 +1,6 @@
 <img src="https://github.com/sojin-p/GoorumMode/assets/140357450/42691454-9458-495c-a128-7d0876513eb9" width="150" height="150"/>  
 
-# MOVIE UP - 영화 리스트
+# MOVIE UP - 한눈에 보는 영화 정보
 ![iPhone Screenshot](https://github.com/sojin-p/MovieUp/assets/140357450/f3a16d79-2941-455d-8eae-c73ef12bfa39)  
 
 <Br>
@@ -34,8 +34,10 @@
 <Br>
 
 ## 핵심 기능
-- 영화 목록 제공 : 인기 영화, 주목할 영화, 현재 상영중, 곧 개봉할 영화
-- 선택한 영화의 줄거리, 등장인물, 미리보기 영상 제공
+- 영화 목록 : DispatchGroup을 활용하여 TMDB API 4개를 동시에 로드
+- 줄거리, Cast 목록 : TMDB API를 Alamofire와 Router 패턴을 활용하여 구현
+- WebKit을 활용한 미리보기 영상
+- Prefetch 메서드 기반의 Pagination
 
 <Br>
 
